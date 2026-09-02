@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content="Portfólio de Thiago Brito, estudante de Análise e Desenvolvimento de Sistemas com foco em Java, Spring Boot e desenvolvimento Backend."
+  />
+
+  <meta name="theme-color" content="#070b14" />
+
+  <title>Thiago Brito | Desenvolvedor Java & Backend</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body id="topo">
+
+  <div class="page-glow glow-one"></div>
+  <div class="page-glow glow-two"></div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <nav class="nav container" aria-label="Navegação principal">
+
+      <a href="#topo" class="brand" aria-label="Ir para o início">
+        TB<span>.</span>
+      </a>
+
+      <button
+        class="menu-toggle"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+      <div class="nav-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#stack">Stack</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#contato" class="nav-cta">Contato</a>
+      </div>
+
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero container section">
+
+      <div class="hero-content reveal">
+
+        <span class="eyebrow">
+          <span class="status-dot"></span>
+          Em busca de estágio em Desenvolvimento de Software
+        </span>
+
+        <p class="hello">Olá, eu sou</p>
+
+        <h1>
+          Thiago <span>Brito.</span>
+        </h1>
+
+        <h2 class="hero-role">
+          Desenvolvedor de Software em Formação.
+        </h2>
+
+        <p class="hero-description">
+          Estudante de Análise e Desenvolvimento de Sistemas com foco em
+          desenvolvimento backend, criando APIs REST e aplicações com
+          <strong>Java, Spring Boot e JPA/Hibernate</strong>, aplicando boas
+          práticas de Programação Orientada a Objetos e organização de código.
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            class="btn btn-primary"
+            href="#projetos"
+          >
+            Ver meus projetos
+            <span>→</span>
+          </a>
+
+          <a
+            class="btn btn-secondary"
+            href="assets/curriculo-thiago-brito.pdf"
+            target="_blank"
+            rel="noopener"
+          >
+            Baixar currículo
+          </a>
+
+        </div>
+
+        <div class="social-row">
+
+          <a
+            href="https://github.com/thiagocb2504"
+            target="_blank"
+            rel="noopener"
+          >
+            GitHub ↗
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/thiago-da-costa-brito/"
+            target="_blank"
+            rel="noopener"
+          >
+            LinkedIn ↗
+          </a>
+
+          <a href="mailto:thiagodacostab2504@gmail.com">
+            E-mail ↗
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- JANELA DE CÓDIGO -->
+      <div class="hero-visual reveal delay-1" aria-hidden="true">
+
+        <div class="code-window">
+
+          <div class="window-bar">
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <small>ThiagoBrito.java</small>
+          </div>
+
+          <pre><code><span class="kw">public class</span> <span class="type">ThiagoBrito</span> {
+
+  <span class="kw">private final</span> String focus =
+      <span class="str">"Java & Backend"</span>;
+
+  <span class="kw">private</span> String[] stack = {
+      <span class="str">"Java"</span>,
+      <span class="str">"Spring Boot"</span>,
+      <span class="str">"JPA"</span>,
+      <span class="str">"SQL"</span>,
+      <span class="str">"REST"</span>
+  };
+
+  <span class="kw">public</span> String goal() {
+    <span class="kw">return</span>
+      <span class="str">"Construir soluções e evoluir"</span>;
+  }
+}</code></pre>
+
+        </div>
+
+        <div class="floating-card">
+          <strong>7</strong>
+          <span>repositórios públicos</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SOBRE -->
+    <section id="sobre" class="section container about-grid">
+
+      <div class="section-heading reveal">
+
+        <span class="section-number">01.</span>
+
+        <div>
+          <p class="overline">Quem sou</p>
+          <h2>Sobre mim</h2>
+        </div>
+
+      </div>
+
+      <div class="about-content reveal delay-1">
+
+        <p>
+          Sou estudante de
+          <strong>
+            Análise e Desenvolvimento de Sistemas na Universidade Católica de Brasília
+          </strong>,
+          atualmente no 4º semestre. Meu foco principal é desenvolvimento Backend
+          no ecossistema Java.
+        </p>
+
+        <p>
+          Tenho experiência prática criando APIs REST com Spring Boot,
+          utilizando JPA/Hibernate, bancos de dados e organização em camadas.
+          Busco desenvolver aplicações bem estruturadas, aplicando os conceitos
+          de Programação Orientada a Objetos e boas práticas de desenvolvimento.
+        </p>
+
+        <p>
+          Procuro minha primeira oportunidade de estágio em tecnologia para
+          transformar estudo em experiência profissional, colaborar em projetos
+          reais e continuar evoluindo tecnicamente.
+        </p>
+
+        <div class="quick-facts">
+
+          <div>
+            <span>Localização</span>
+            <strong>Brasília, DF</strong>
+          </div>
+
+          <div>
+            <span>Formação</span>
+            <strong>ADS · UCB</strong>
+          </div>
+
+          <div>
+            <span>Foco</span>
+            <strong>Java · Backend</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- STACK -->
+    <section id="stack" class="section container">
+
+      <div class="section-heading reveal">
+
+        <span class="section-number">02.</span>
+
+        <div>
+          <p class="overline">Tecnologias</p>
+          <h2>Minha stack</h2>
+        </div>
+
+      </div>
+
+      <div class="skills-grid">
+
+        <article class="skill-card reveal">
+
+          <span class="skill-icon">{ }</span>
+
+          <h3>Backend & Linguagens</h3>
+
+          <div class="chips">
+            <span>Java</span>
+            <span>Spring Boot</span>
+            <span>JPA / Hibernate</span>
+            <span>REST APIs</span>
+            <span>C</span>
+            <span>JavaScript</span>
+            <span>TypeScript</span>
+          </div>
+
+        </article>
+
+
+        <article class="skill-card reveal delay-1">
+
+          <span class="skill-icon">DB</span>
+
+          <h3>Dados & Frontend</h3>
+
+          <div class="chips">
+            <span>MySQL</span>
+            <span>MongoDB</span>
+            <span>H2</span>
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>Angular</span>
+            <span>Swing</span>
+          </div>
+
+        </article>
+
+
+        <article class="skill-card reveal delay-2">
+
+          <span class="skill-icon">$_</span>
+
+          <h3>Ferramentas</h3>
+
+          <div class="chips">
+            <span>Git / GitHub</span>
+            <span>Postman</span>
+            <span>Maven</span>
+            <span>IntelliJ IDEA</span>
+            <span>VS Code</span>
+            <span>Eclipse</span>
+            <span>Scrum</span>
+            <span>Kanban</span>
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROJETOS -->
+    <section id="projetos" class="section container">
+
+      <div class="section-heading reveal">
+
+        <span class="section-number">03.</span>
+
+        <div>
+          <p class="overline">Código na prática</p>
+          <h2>Projetos em destaque</h2>
+        </div>
+
+      </div>
+
+
+      <!-- PROJETO PRINCIPAL -->
+      <div class="featured-project reveal">
+
+        <div class="project-visual api-visual">
+
+          <span class="project-label">
+            PROJETO PRINCIPAL
+          </span>
+
+          <div class="api-lines">
+
+            <p>
+              <span class="method post">POST</span>
+              /users
+            </p>
+
+            <p>
+              <span class="method get">GET</span>
+              /users/{id}
+            </p>
+
+            <p>
+              <span class="method put">PUT</span>
+              /users/{id}
+            </p>
+
+            <p>
+              <span class="method delete">DELETE</span>
+              /users/{id}
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="project-info">
+
+          <span class="project-kicker">
+            Java · Spring Boot
+          </span>
+
+          <h3>
+            Cadastro de Usuários — CRUD API
+          </h3>
+
+          <p>
+            API REST completa para cadastro, consulta, atualização e exclusão
+            de usuários, estruturada em camadas com Controller, Service e Repository.
+          </p>
+
+          <div class="project-tech">
+            <span>Java</span>
+            <span>Spring Boot</span>
+            <span>JPA/Hibernate</span>
+            <span>H2</span>
+            <span>Lombok</span>
+            <span>Maven</span>
+          </div>
+
+          <a
+            href="https://github.com/thiagocb2504/cadastro-usuario"
+            target="_blank"
+            rel="noopener"
+            class="text-link"
+          >
+            Ver repositório no GitHub →
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- OUTROS PROJETOS -->
+      <div class="projects-grid">
+
+
+        <article class="project-card reveal">
+
+          <div class="project-top">
+
+            <span class="folder-icon">⌁</span>
+
+            <a
+              href="https://github.com/thiagocb2504/campo-minado-swing"
+              target="_blank"
+              rel="noopener"
+              aria-label="Abrir projeto Campo Minado no GitHub"
+            >
+              ↗
+            </a>
+
+          </div>
+
+          <span class="project-kicker">
+            Java Desktop
+          </span>
+
+          <h3>
+            Campo Minado com Swing
+          </h3>
+
+          <p>
+            Jogo Campo Minado com interface gráfica, evolução de uma versão em
+            console para uma aplicação desktop estruturada com Programação
+            Orientada a Objetos.
+          </p>
+
+          <div class="project-tech">
+            <span>Java</span>
+            <span>Swing</span>
+            <span>POO</span>
+          </div>
+
+        </article>
+
+
+        <article class="project-card reveal delay-1">
+
+          <div class="project-top">
+
+            <span class="folder-icon">⌁</span>
+
+            <a
+              href="https://github.com/ObarbosaDev/Banco-emC-Malvezzi"
+              target="_blank"
+              rel="noopener"
+              aria-label="Abrir projeto Sistema Bancário no GitHub"
+            >
+              ↗
+            </a>
+
+          </div>
+
+          <span class="project-kicker">
+            Projeto acadêmico
+          </span>
+
+          <h3>
+            Sistema Bancário em C
+          </h3>
+
+          <p>
+            Projeto desenvolvido em equipe com operações de conta, depósito,
+            saque e transferência, aplicando estruturas de dados e versionamento
+            colaborativo com Git.
+          </p>
+
+          <div class="project-tech">
+            <span>C</span>
+            <span>Estruturas de Dados</span>
+            <span>Git</span>
+          </div>
+
+        </article>
+
+
+        <article class="project-card reveal delay-2">
+
+          <div class="project-top">
+
+            <span class="folder-icon">⌁</span>
+
+            <a
+              href="https://github.com/thiagocb2504/calculadoraMAC"
+              target="_blank"
+              rel="noopener"
+              aria-label="Abrir projeto Calculadora MAC no GitHub"
+            >
+              ↗
+            </a>
+
+          </div>
+
+          <span class="project-kicker">
+            Java Desktop
+          </span>
+
+          <h3>
+            Calculadora MAC
+          </h3>
+
+          <p>
+            Calculadora com interface gráfica desenvolvida durante os estudos
+            de Java, aplicando Swing, Programação Orientada a Objetos e conceitos
+            do padrão Observer.
+          </p>
+
+          <div class="project-tech">
+            <span>Java</span>
+            <span>Swing</span>
+            <span>Observer</span>
+          </div>
+
+        </article>
+
+      </div>
+
+
+      <div class="center-action reveal">
+
+        <a
+          href="https://github.com/thiagocb2504?tab=repositories"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-secondary"
+        >
+          Ver todos os repositórios no GitHub ↗
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- EXPERIÊNCIA -->
+    <section id="experiencia" class="section container">
+
+      <div class="section-heading reveal">
+
+        <span class="section-number">04.</span>
+
+        <div>
+          <p class="overline">Minha trajetória</p>
+          <h2>Experiência & formação</h2>
+        </div>
+
+      </div>
+
+
+      <div class="timeline">
+
+        <article class="timeline-item reveal">
+
+          <span class="timeline-dot"></span>
+
+          <div class="timeline-date">
+            2025
+          </div>
+
+          <div>
+
+            <span class="project-kicker">
+              Hackathon
+            </span>
+
+            <h3>
+              Orbitall Payments 2025
+            </h3>
+
+            <p>
+              Desenvolvimento de uma API de transações bancárias com Java 21+,
+              Spring Boot, Maven, H2, Postman, Git e IntelliJ.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article class="timeline-item reveal">
+
+          <span class="timeline-dot"></span>
+
+          <div class="timeline-date">
+            Nov/2024 — Ago/2026
+          </div>
+
+          <div>
+
+            <span class="project-kicker">
+              Experiência profissional
+            </span>
+
+            <h3>
+              Assistente Administrativo · Minuta Comunicação
+            </h3>
+
+            <p>
+              Gestão de processos, inclusão de dados em plataformas
+              governamentais, elaboração de planilhas, documentos e
+              apresentações. Experiência que reforçou organização,
+              comunicação e responsabilidade.
+            </p>
+
+          </div>
+
+        </article>
+
+
+        <article class="timeline-item reveal">
+
+          <span class="timeline-dot"></span>
+
+          <div class="timeline-date">
+            Cursando
+          </div>
+
+          <div>
+
+            <span class="project-kicker">
+              Formação
+            </span>
+
+            <h3>
+              Análise e Desenvolvimento de Sistemas · UCB
+            </h3>
+
+            <p>
+              4º semestre, modalidade EAD, com formação direcionada a
+              desenvolvimento de sistemas e tecnologias da informação.
+            </p>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- CURSOS -->
+    <section id="cursos" class="section container courses-section">
+
+      <div class="section-heading reveal">
+
+        <span class="section-number">05.</span>
+
+        <div>
+          <p class="overline">Aprendizado contínuo</p>
+          <h2>Cursos</h2>
+        </div>
+
+      </div>
+
+
+      <div class="courses-grid">
+
+        <div class="course reveal">
+          <strong>Java COMPLETO</strong>
+          <span>Udemy · 77h</span>
+        </div>
+
+        <div class="course reveal delay-1">
+          <strong>Entendendo TypeScript</strong>
+          <span>Udemy · 11h</span>
+        </div>
+
+        <div class="course reveal delay-2">
+          <strong>Angular v18</strong>
+          <span>Kipper Dev · 1h</span>
+        </div>
+
+        <div class="course reveal">
+          <strong>Fundamentos de TI</strong>
+          <span>Fundação Bradesco · 7h</span>
+        </div>
+
+        <div class="course reveal delay-1">
+          <strong>Excel Básico ao Avançado</strong>
+          <span>Fundação Bradesco · 65h</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTATO -->
+    <section
+      id="contato"
+      class="section container contact-section reveal"
+    >
+
+      <span class="section-number">
+        06.
+      </span>
+
+      <p class="overline">
+        Vamos conversar?
+      </p>
+
+      <h2>
+        Busco minha primeira oportunidade em tecnologia.
+      </h2>
+
+      <p>
+        Estou disponível para vagas de estágio em desenvolvimento de software
+        e quero contribuir com projetos reais enquanto continuo evoluindo como
+        desenvolvedor.
+      </p>
+
+      <div class="hero-actions center-buttons">
+
+        <a
+          class="btn btn-primary"
+          href="mailto:thiagodacostab2504@gmail.com"
+        >
+          Enviar e-mail
+        </a>
+
+        <a
+          class="btn btn-secondary"
+          href="https://www.linkedin.com/in/thiago-da-costa-brito/"
+          target="_blank"
+          rel="noopener"
+        >
+          LinkedIn ↗
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="footer container">
+
+    <p>
+      Desenvolvido por
+      <strong>Thiago Brito</strong>
+      · 2026
+    </p>
+
+    <a
+      href="#topo"
+      class="back-to-top"
+    >
+      Voltar ao topo ↑
+    </a>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
