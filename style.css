@@ -683,6 +683,19 @@ strong {
   color: var(--ink-3);
 }
 
+.fig-modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fig-modes span {
+  padding: 3px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--ink-2);
+}
+
 .flow b,
 .routes b {
   font-weight: 500;

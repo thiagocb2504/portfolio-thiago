@@ -245,19 +245,26 @@
           <div class="feature-figure" aria-hidden="true">
             <p class="fig-label mono">fig. 1 · fluxo de um pagamento</p>
             <ol class="flow mono">
-              <li><b>Factory</b> cria o pagamento</li>
-              <li><b>Chain</b> valida cliente → valor → saldo</li>
-              <li><b>Strategy</b> escolhe Pix, Boleto, Cartão ou PayPal</li>
-              <li><b>Adapter</b> conversa com o gateway externo</li>
+              <li><b>Chain</b> valida valor → cliente → saldo</li>
+              <li><b>Factory</b> cria o método de pagamento</li>
+              <li><b>Strategy</b> executa Pix, Cartão, Boleto ou PayPal</li>
+              <li><b>Adapter</b> conversa com o gateway do PayPal</li>
             </ol>
+            <p class="fig-modes mono">
+              <span>Console</span>
+              <span>API REST</span>
+              <span>Interface web</span>
+            </p>
           </div>
           <div class="feature-text">
-            <p class="kicker mono">Java · Maven · 2026</p>
+            <p class="kicker mono">Java 21 · Spring Boot · React · TypeScript · 2026</p>
             <h3>Sistema de Pagamentos com Design Patterns</h3>
             <p>
               Um mesmo pagamento passando por quatro padrões de projeto, cada um
-              com uma responsabilidade clara. Feito para entender na prática
-              quando cada padrão resolve um problema de verdade.
+              com uma responsabilidade clara. Começou no console e ganhou uma API
+              em Spring Boot que devolve o que cada classe fez, além de uma
+              interface em React com slides sobre os padrões e um simulador que
+              anima cada etapa do fluxo.
             </p>
             <a class="arrow-link" href="https://github.com/thiagocb2504/sistema-pagamentos-design-patterns"
               target="_blank" rel="noopener">Ver código <span aria-hidden="true">→</span></a>
@@ -362,6 +369,7 @@
           <h3 class="mono">Front-end</h3>
           <ul>
             <li>Angular</li>
+            <li>React</li>
             <li>TypeScript</li>
             <li>JavaScript</li>
             <li>HTML · CSS</li>
