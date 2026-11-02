@@ -18,6 +18,3 @@ python3 -m http.server 5500
 
 Depois é só abrir `http://localhost:5500`.
 
-## Publicação
-
-O GitHub Pages aponta para a branch `main`, pasta raiz.
