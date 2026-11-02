@@ -1,11 +1,6 @@
-const header =
-  document.querySelector('.header');
-
-const menuButton =
-  document.querySelector('.menu-toggle');
-
-const navLinks =
-  document.querySelector('.nav-links');
+const header = document.querySelector('.header');
+const menuButton = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
 
 
 /* =========================
@@ -13,23 +8,10 @@ const navLinks =
 ========================= */
 
 function updateHeader() {
-
-  if (!header) {
-    return;
-  }
-
-  header.classList.toggle(
-    'scrolled',
-    window.scrollY > 20
-  );
-
+  header.classList.toggle('scrolled', window.scrollY > 8);
 }
 
-window.addEventListener(
-  'scroll',
-  updateHeader
-);
-
+window.addEventListener('scroll', updateHeader, { passive: true });
 updateHeader();
 
 
@@ -37,257 +19,170 @@ updateHeader();
    MENU MOBILE
 ========================= */
 
-if (menuButton && navLinks) {
+function setMenu(open) {
+  navLinks.classList.toggle('open', open);
+  menuButton.setAttribute('aria-expanded', String(open));
+  menuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+}
 
-  menuButton.addEventListener(
-    'click',
-    () => {
+menuButton.addEventListener('click', () => {
+  setMenu(!navLinks.classList.contains('open'));
+});
 
-      const isOpen =
-        navLinks.classList.toggle('open');
+navLinks.querySelectorAll('a').forEach((link) => {
+  link.addEventListener('click', () => setMenu(false));
+});
 
-      menuButton.setAttribute(
-        'aria-expanded',
-        String(isOpen)
-      );
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && navLinks.classList.contains('open')) {
+    setMenu(false);
+    menuButton.focus();
+  }
+});
 
-      menuButton.textContent =
-        isOpen
-          ? '✕'
-          : '☰';
 
-    }
+/* =========================
+   TEMA CLARO / ESCURO
+========================= */
+
+const root = document.documentElement;
+const themeButton = document.querySelector('.theme-toggle');
+const themeMetas = document.querySelectorAll('meta[name="theme-color"]');
+const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+function savedTheme() {
+  try {
+    return localStorage.getItem('theme');
+  } catch {
+    return null;
+  }
+}
+
+function applyTheme(theme) {
+  root.dataset.theme = theme;
+
+  themeButton.setAttribute(
+    'aria-label',
+    theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro'
   );
 
+  const paper = getComputedStyle(root).getPropertyValue('--paper').trim();
+  themeMetas.forEach((meta) => meta.setAttribute('content', paper));
+}
 
-  /* FECHA AO CLICAR NO LINK */
+themeButton.addEventListener('click', () => {
+  const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
 
-  document
-    .querySelectorAll('.nav-links a')
-    .forEach(link => {
+  try {
+    localStorage.setItem('theme', next);
+  } catch {
+    // sem armazenamento: o tema vale só para esta visita
+  }
 
-      link.addEventListener(
-        'click',
-        () => {
+  if (document.startViewTransition && !reduceMotion.matches) {
+    document.startViewTransition(() => applyTheme(next));
+  } else {
+    applyTheme(next);
+  }
+});
 
-          navLinks.classList.remove(
-            'open'
-          );
+// sem escolha salva, acompanha o tema do sistema
+systemDark.addEventListener('change', (event) => {
+  if (!savedTheme()) {
+    applyTheme(event.matches ? 'dark' : 'light');
+  }
+});
 
-          menuButton.setAttribute(
-            'aria-expanded',
-            'false'
-          );
+applyTheme(root.dataset.theme || (systemDark.matches ? 'dark' : 'light'));
 
-          menuButton.textContent =
-            '☰';
 
-        }
-      );
+/* =========================
+   HORA EM BRASÍLIA
+========================= */
 
+const clock = document.querySelector('.clock');
+
+const clockFormat = new Intl.DateTimeFormat('pt-BR', {
+  hour: '2-digit',
+  minute: '2-digit',
+  timeZone: 'America/Sao_Paulo'
+});
+
+function updateClock() {
+  clock.textContent = clockFormat.format(new Date());
+}
+
+updateClock();
+setInterval(updateClock, 30000);
+
+
+/* =========================
+   ANIMAÇÃO DE ENTRADA
+========================= */
+
+const revealItems = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
     });
+  }, { rootMargin: '0px 0px -8% 0px' });
 
-
-  /* FECHA COM ESC */
-
-  document.addEventListener(
-    'keydown',
-    event => {
-
-      if (
-        event.key === 'Escape'
-      ) {
-
-        navLinks.classList.remove(
-          'open'
-        );
-
-        menuButton.setAttribute(
-          'aria-expanded',
-          'false'
-        );
-
-        menuButton.textContent =
-          '☰';
-
-      }
-
-    }
-  );
-
-
-  /* FECHA AO VOLTAR PARA DESKTOP */
-
-  window.addEventListener(
-    'resize',
-    () => {
-
-      if (
-        window.innerWidth > 900
-      ) {
-
-        navLinks.classList.remove(
-          'open'
-        );
-
-        menuButton.setAttribute(
-          'aria-expanded',
-          'false'
-        );
-
-        menuButton.textContent =
-          '☰';
-
-      }
-
-    }
-  );
-
-}
-
-
-/* =========================
-   LINKS INTERNOS
-========================= */
-
-document
-  .querySelectorAll('a[href^="#"]')
-  .forEach(link => {
-
-    link.addEventListener(
-      'click',
-      event => {
-
-        const targetId =
-          link.getAttribute('href');
-
-
-        if (
-          !targetId ||
-          targetId === '#'
-        ) {
-          return;
-        }
-
-
-        const target =
-          document.querySelector(
-            targetId
-          );
-
-
-        if (!target) {
-          return;
-        }
-
-
-        event.preventDefault();
-
-
-        /* VOLTAR AO TOPO */
-
-        if (
-          targetId === '#topo'
-        ) {
-
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-          });
-
-          return;
-        }
-
-
-        /* OUTRAS SEÇÕES */
-
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-
-      }
-    );
-
-  });
-
-
-/* =========================
-   ANIMAÇÃO AO APARECER
-========================= */
-
-const revealElements =
-  document.querySelectorAll(
-    '.reveal'
-  );
-
-
-if (
-  !(
-    'IntersectionObserver'
-    in window
-  )
-) {
-
-  revealElements.forEach(
-    element => {
-
-      element.classList.add(
-        'visible'
-      );
-
-    }
-  );
-
+  revealItems.forEach((item) => revealObserver.observe(item));
 } else {
-
-  const observer =
-    new IntersectionObserver(
-
-      entries => {
-
-        entries.forEach(
-          entry => {
-
-            if (
-              entry.isIntersecting
-            ) {
-
-              entry.target
-                .classList
-                .add(
-                  'visible'
-                );
-
-              observer.unobserve(
-                entry.target
-              );
-
-            }
-
-          }
-        );
-
-      },
-
-      {
-        threshold: 0.12,
-
-        rootMargin:
-          '0px 0px -40px 0px'
-      }
-
-    );
-
-
-  revealElements.forEach(
-    element => {
-
-      observer.observe(
-        element
-      );
-
-    }
-  );
-
+  revealItems.forEach((item) => item.classList.add('visible'));
 }
+
+
+/* =========================
+   LINK ATIVO NO MENU
+========================= */
+
+const sections = document.querySelectorAll('main section[id]');
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) {
+      return;
+    }
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+    });
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+
+sections.forEach((section) => navObserver.observe(section));
+
+
+/* =========================
+   COPIAR E-MAIL
+========================= */
+
+const copyButton = document.querySelector('.copy-btn');
+const copyStatus = document.querySelector('.copy-status');
+
+copyButton.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(copyButton.dataset.copy);
+    copyStatus.textContent = 'Copiado';
+  } catch {
+    copyStatus.textContent = 'Não foi possível copiar';
+  }
+
+  setTimeout(() => {
+    copyStatus.textContent = '';
+  }, 2200);
+});
+
+
+/* =========================
+   ANO NO RODAPÉ
+========================= */
+
+document.querySelector('.year').textContent = new Date().getFullYear();

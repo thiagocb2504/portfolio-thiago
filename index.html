@@ -5,513 +5,139 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Thiago Brito · Desenvolvedor de Software</title>
+
   <meta name="description"
-    content="Portfólio de Thiago Brito, estudante de Análise e Desenvolvimento de Sistemas e Estagiário de TI, com foco em Java, Spring Boot e desenvolvimento Backend." />
+    content="Thiago Brito, desenvolvedor de software em Brasília. Estagiário na CDS Solutions, trabalhando com Java, Spring Boot, Python e Angular. Estudante de ADS na Universidade Católica de Brasília." />
 
-  <meta name="theme-color" content="#070b14" />
+  <meta property="og:title" content="Thiago Brito · Desenvolvedor de Software" />
+  <meta property="og:description"
+    content="Java, Spring Boot, Python e Angular. Estagiário na CDS Solutions, Brasília." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://thiagocb2504.github.io/portfolio-thiago/" />
 
-  <title>Thiago Brito | Desenvolvedor Java & Backend</title>
+  <meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14140f" media="(prefers-color-scheme: dark)" />
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2316150f'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='34' fill='%23f3efe6'%3ETb%3C/text%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
+
+  <script>
+    document.documentElement.classList.add('js');
+
+    // aplica o tema antes da pintura para não piscar
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (e) { }
+      var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    })();
+  </script>
 </head>
 
 <body id="topo">
 
-  <div class="page-glow glow-one"></div>
-  <div class="page-glow glow-two"></div>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-  <!-- HEADER -->
   <header class="header">
+    <nav class="nav wrap" aria-label="Navegação principal">
 
-    <nav class="nav container" aria-label="Navegação principal">
+      <a href="#topo" class="wordmark">Thiago Brito</a>
 
-      <a href="#topo" class="brand" aria-label="Ir para o início">
-        TB<span>.</span>
-      </a>
+      <ul class="nav-links" id="menu">
+        <li><a href="#experiencia">Experiência</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#formacao">Formação</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
 
-      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
-        ☰
-      </button>
+      <div class="nav-actions">
 
-      <div class="nav-links">
-        <a href="#sobre">Sobre</a>
-        <a href="#stack">Stack</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#experiencia">Experiência</a>
-        <a href="#cursos">Cursos</a>
-        <a href="#contato" class="nav-cta">Contato</a>
+        <button class="theme-toggle" type="button" aria-label="Ativar tema escuro">
+          <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none"
+            stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z" />
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none"
+            stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" />
+          </svg>
+        </button>
+
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+          <span></span>
+          <span></span>
+        </button>
+
       </div>
 
     </nav>
-
   </header>
 
 
-  <main>
+  <main id="conteudo">
 
-    <!-- HERO -->
-    <section class="hero container section">
+    <!-- INTRO -->
+    <section class="intro wrap">
 
-      <div class="hero-content reveal">
+      <p class="intro-meta mono">
+        <span>Desenvolvedor de software</span>
+        <span>Brasília, DF · <time class="clock" aria-label="Horário local em Brasília">--:--</time></span>
+      </p>
 
-        <span class="eyebrow">
-          <span class="status-dot"></span>
-          Desenvolvedor de Software em Formação
-        </span>
+      <h1 class="intro-name">Thiago <em>Brito</em></h1>
 
-        <p class="hello">Olá, eu sou</p>
+      <div class="intro-grid">
 
-        <h1>
-          Thiago <span>Brito.</span>
-        </h1>
-
-        <h2 class="hero-role">
-          Java · Spring Boot · Backend
-        </h2>
-
-        <p class="hero-description">
-          Estudante de Análise e Desenvolvimento de Sistemas e
-          <strong>Estagiário de TI na FI Group by EPSA</strong>, com foco em
-          desenvolvimento backend. Desenvolvo APIs REST e aplicações utilizando
-          <strong>Java, Spring Boot, JPA/Hibernate e SQL</strong>, aplicando
-          Programação Orientada a Objetos, arquitetura em camadas e boas práticas
-          de desenvolvimento.
-        </p>
-
-        <div class="hero-actions">
-
-          <a class="btn btn-primary" href="#projetos">
-            Ver meus projetos
-            <span>→</span>
-          </a>
-
-          <a class="btn btn-secondary" href="assets/CV TI - THIAGO BRITO.pdf" target="_blank" rel="noopener">
-            Baixar currículo
-          </a>
-
-        </div>
-
-        <div class="social-row">
-
-          <a href="https://github.com/thiagocb2504" target="_blank" rel="noopener">
-            GitHub ↗
-          </a>
-
-          <a href="https://www.linkedin.com/in/thiago-da-costa-brito/" target="_blank" rel="noopener">
-            LinkedIn ↗
-          </a>
-
-          <a href="mailto:thiagodacostab2504@gmail.com">
-            E-mail ↗
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <!-- JANELA DE CÓDIGO -->
-      <div class="hero-visual reveal delay-1" aria-hidden="true">
-
-        <div class="code-window">
-
-          <div class="window-bar">
-            <span></span>
-            <span></span>
-            <span></span>
-
-            <small>ThiagoBrito.java</small>
-          </div>
-
-          <pre><code><span class="kw">public class</span> <span class="type">ThiagoBrito</span> {
-
-  <span class="kw">private final</span> String focus =
-      <span class="str">"Java & Backend"</span>;
-
-  <span class="kw">private</span> String[] stack = {
-      <span class="str">"Java"</span>,
-      <span class="str">"Spring Boot"</span>,
-      <span class="str">"JPA/Hibernate"</span>,
-      <span class="str">"SQL"</span>,
-      <span class="str">"REST"</span>
-  };
-
-  <span class="kw">public</span> String goal() {
-    <span class="kw">return</span>
-      <span class="str">"Construir soluções e evoluir"</span>;
-  }
-}</code></pre>
-
-        </div>
-
-        <div class="floating-card">
-          <strong>Backend</strong>
-          <span>Java · Spring Boot</span>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- SOBRE -->
-    <section id="sobre" class="section container about-grid">
-
-      <div class="section-heading reveal">
-
-        <span class="section-number">01.</span>
-
-        <div>
-          <p class="overline">Quem sou</p>
-          <h2>Sobre mim</h2>
-        </div>
-
-      </div>
-
-      <div class="about-content reveal delay-1">
-
-        <p>
-          Sou estudante de
-          <strong>
-            Análise e Desenvolvimento de Sistemas na Universidade Católica de Brasília
-          </strong>,
-          atualmente no 4º semestre, e atuo como
-          <strong>Estagiário de TI na FI Group by EPSA</strong>.
-          Meu foco principal é desenvolvimento Backend no ecossistema Java.
-        </p>
-
-        <p>
-          Tenho conhecimentos em Java, Spring Boot, Programação Orientada a
-          Objetos, JPA/Hibernate, SQL e desenvolvimento de APIs REST.
-          Em meus projetos pessoais e acadêmicos, aplico arquitetura em camadas,
-          bancos de dados e boas práticas de programação.
-        </p>
-
-        <p>
-          Na minha experiência profissional atual, participo da avaliação
-          técnica de projetos de tecnologia, análise de documentação,
-          elaboração de relatórios técnicos e interação com equipes e clientes.
-          Busco continuar evoluindo profissionalmente na área de desenvolvimento
-          de software e ampliar minha experiência prática com novas tecnologias.
-        </p>
-
-        <div class="quick-facts">
-
-          <div>
-            <span>Localização</span>
-            <strong>Brasília, DF</strong>
-          </div>
-
-          <div>
-            <span>Formação</span>
-            <strong>ADS · UCB</strong>
-          </div>
-
-          <div>
-            <span>Foco</span>
-            <strong>Java · Backend</strong>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- STACK -->
-    <section id="stack" class="section container">
-
-      <div class="section-heading reveal">
-
-        <span class="section-number">02.</span>
-
-        <div>
-          <p class="overline">Tecnologias</p>
-          <h2>Minha stack</h2>
-        </div>
-
-      </div>
-
-      <div class="skills-grid">
-
-        <article class="skill-card reveal">
-
-          <span class="skill-icon">{ }</span>
-
-          <h3>Backend & Linguagens</h3>
-
-          <div class="chips">
-            <span>Java</span>
-            <span>Spring Boot</span>
-            <span>JPA / Hibernate</span>
-            <span>REST APIs</span>
-            <span>SQL</span>
-            <span>C</span>
-            <span>JavaScript</span>
-            <span>TypeScript</span>
-          </div>
-
-        </article>
-
-
-        <article class="skill-card reveal delay-1">
-
-          <span class="skill-icon">DB</span>
-
-          <h3>Dados & Frontend</h3>
-
-          <div class="chips">
-            <span>MySQL</span>
-            <span>MongoDB</span>
-            <span>H2</span>
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>Angular</span>
-            <span>Swing</span>
-          </div>
-
-        </article>
-
-
-        <article class="skill-card reveal delay-2">
-
-          <span class="skill-icon">$_</span>
-
-          <h3>Ferramentas & Metodologias</h3>
-
-          <div class="chips">
-            <span>Git / GitHub</span>
-            <span>Postman</span>
-            <span>Maven</span>
-            <span>IntelliJ IDEA</span>
-            <span>VS Code</span>
-            <span>Eclipse</span>
-            <span>Excel</span>
-            <span>Scrum</span>
-            <span>Kanban</span>
-          </div>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- PROJETOS -->
-    <section id="projetos" class="section container">
-
-      <div class="section-heading reveal">
-
-        <span class="section-number">03.</span>
-
-        <div>
-          <p class="overline">Código na prática</p>
-          <h2>Projetos em destaque</h2>
-        </div>
-
-      </div>
-
-
-      <!-- PROJETO PRINCIPAL -->
-      <div class="featured-project reveal">
-
-        <div class="project-visual api-visual">
-
-          <span class="project-label">
-            PROJETO PRINCIPAL
-          </span>
-
-          <div class="api-lines">
-
-            <p>
-              <span class="method post">POST</span>
-              /users
-            </p>
-
-            <p>
-              <span class="method get">GET</span>
-              /users/{id}
-            </p>
-
-            <p>
-              <span class="method put">PUT</span>
-              /users/{id}
-            </p>
-
-            <p>
-              <span class="method delete">DELETE</span>
-              /users/{id}
-            </p>
-
-          </div>
-
-        </div>
-
-
-        <div class="project-info">
-
-          <span class="project-kicker">
-            Java · Spring Boot
-          </span>
-
-          <h3>
-            Cadastro de Usuário — CRUD API
-          </h3>
-
+        <div class="intro-text">
+          <p class="lead">
+            Trabalho dos dois lados de uma aplicação: APIs em
+            <strong>Java e Spring Boot</strong> no back-end e interfaces em
+            <strong>Angular e TypeScript</strong> no front-end.
+          </p>
           <p>
-            API REST completa com operações de criar, buscar, atualizar e
-            excluir usuários. Estruturada em camadas com Controller, Service
-            e Repository, utilizando banco H2 em memória.
+            Hoje sou estagiário de desenvolvimento na <strong>CDS Solutions</strong>,
+            onde trabalho com <strong>Python, TypeScript e Docker</strong>, e curso
+            Análise e Desenvolvimento de Sistemas na Católica de Brasília.
+            Gosto de código organizado em camadas, de entender por que um padrão
+            existe antes de usá-lo e de terminar o que começo.
           </p>
 
-          <div class="project-tech">
-            <span>Java</span>
-            <span>Spring Boot</span>
-            <span>JPA/Hibernate</span>
-            <span>H2</span>
-            <span>Lombok</span>
-            <span>Maven</span>
-            <span>REST API</span>
-          </div>
-
-          <a href="https://github.com/thiagocb2504/cadastro-usuario" target="_blank" rel="noopener" class="text-link">
-            Ver repositório no GitHub →
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <!-- OUTROS PROJETOS -->
-      <div class="projects-grid">
-
-        <article class="project-card reveal">
-
-          <div class="project-top">
-
-            <span class="folder-icon">⌁</span>
-
-            <a href="https://github.com/thiagocb2504/campo-minado-swing" target="_blank" rel="noopener"
-              aria-label="Abrir projeto Campo Minado no GitHub">
-              ↗
+          <div class="intro-actions">
+            <a class="btn btn-solid" href="assets/CV_TI_THIAGO_BRITO.pdf" target="_blank" rel="noopener">
+              Currículo em PDF
             </a>
-
+            <a class="btn btn-line" href="#contato">Entrar em contato</a>
           </div>
+        </div>
 
-          <span class="project-kicker">
-            Java Desktop
-          </span>
-
-          <h3>
-            Campo Minado com Swing
-          </h3>
-
-          <p>
-            Jogo Campo Minado desenvolvido em Java Swing. Evolução de uma
-            versão em console para uma aplicação com interface gráfica
-            completa, aplicando conceitos de Programação Orientada a Objetos.
-          </p>
-
-          <div class="project-tech">
-            <span>Java</span>
-            <span>Swing</span>
-            <span>POO</span>
-            <span>Eclipse</span>
-          </div>
-
-        </article>
-
-
-        <article class="project-card reveal delay-1">
-
-          <div class="project-top">
-
-            <span class="folder-icon">⌁</span>
-
-            <a href="https://github.com/ObarbosaDev/Banco-emC-Malvezzi" target="_blank" rel="noopener"
-              aria-label="Abrir projeto Sistema Bancário no GitHub">
-              ↗
-            </a>
-
-          </div>
-
-          <span class="project-kicker">
-            Projeto acadêmico
-          </span>
-
-          <h3>
-            Sistema Bancário em C
-          </h3>
-
-          <p>
-            Projeto desenvolvido em equipe com operações de conta, depósito,
-            saque e transferência, aplicando estruturas de dados e
-            versionamento colaborativo com Git.
-          </p>
-
-          <div class="project-tech">
-            <span>C</span>
-            <span>Estruturas de Dados</span>
-            <span>Git</span>
-          </div>
-
-        </article>
-
-
-        <article class="project-card reveal delay-2">
-
-          <div class="project-top">
-
-            <span class="folder-icon">⌁</span>
-
-            <a href="https://github.com/thiagocb2504/calculadoraMAC" target="_blank" rel="noopener"
-              aria-label="Abrir projeto Calculadora MAC no GitHub">
-              ↗
-            </a>
-
-          </div>
-
-          <span class="project-kicker">
-            Java Desktop
-          </span>
-
-          <h3>
-            Calculadora MAC
-          </h3>
-
-          <p>
-            Calculadora com interface gráfica desenvolvida durante os estudos
-            de Java, aplicando Swing, Programação Orientada a Objetos e
-            conceitos do padrão Observer.
-          </p>
-
-          <div class="project-tech">
-            <span>Java</span>
-            <span>Swing</span>
-            <span>Observer</span>
-          </div>
-
-        </article>
-
-      </div>
-
-
-      <div class="center-action reveal">
-
-        <a href="https://github.com/thiagocb2504?tab=repositories" target="_blank" rel="noopener"
-          class="btn btn-secondary">
-          Ver todos os repositórios no GitHub ↗
-        </a>
+        <aside class="now" aria-label="Neste momento">
+          <h2 class="now-title mono">Neste momento</h2>
+          <dl>
+            <div>
+              <dt>Trabalho</dt>
+              <dd>Estagiário de Desenvolvimento<br><span>CDS Solutions, desde out. 2026</span></dd>
+            </div>
+            <div>
+              <dt>Estudo</dt>
+              <dd>ADS, 4º semestre<br><span>Universidade Católica de Brasília</span></dd>
+            </div>
+            <div>
+              <dt>Praticando</dt>
+              <dd>Design patterns em Java<br><span>Strategy, Factory, Adapter, Chain</span></dd>
+            </div>
+          </dl>
+        </aside>
 
       </div>
 
@@ -519,170 +145,368 @@
 
 
     <!-- EXPERIÊNCIA -->
-    <section id="experiencia" class="section container">
+    <section id="experiencia" class="section wrap">
 
-      <div class="section-heading reveal">
+      <header class="section-head">
+        <span class="section-index mono">01</span>
+        <h2>Experiência</h2>
+      </header>
 
-        <span class="section-number">04.</span>
+      <ol class="ledger">
 
-        <div>
-          <p class="overline">Minha trajetória</p>
-          <h2>Experiência & formação</h2>
-        </div>
-
-      </div>
-
-
-      <div class="timeline">
-
-        <!-- FI GROUP -->
-        <article class="timeline-item reveal">
-
-          <span class="timeline-dot"></span>
-
-          <div class="timeline-date">
-            Set/2026 — Atual
+        <li class="ledger-row reveal">
+          <div class="ledger-when mono">
+            <span>Out. 2026</span>
+            <span>Atual</span>
           </div>
-
-          <div>
-
-            <span class="project-kicker">
-              Experiência profissional
-            </span>
-
-            <h3>
-              Estagiário de TI · FI Group by EPSA
-            </h3>
-
+          <div class="ledger-what">
+            <h3>Estagiário de Desenvolvimento de Software</h3>
+            <p class="ledger-org">CDS Solutions · Presencial</p>
+            <p class="ledger-stack mono">Python · TypeScript · Docker</p>
+          </div>
+          <div class="ledger-body">
             <p>
-              Apoio ao controle de informações de clientes e à avaliação
-              técnica de projetos de TI, com análise de documentação e
-              verificação de conformidade com a Lei do Bem e a Lei de TICs.
-              Elaboração de relatórios técnicos, participação em reuniões de
-              equipe e interação com clientes para esclarecimento de dúvidas
-              e feedbacks técnicos.
+              Desenvolvimento e manutenção de sistemas web, APIs e painéis
+              administrativos, no front-end e no back-end.
             </p>
-
+            <ul class="ticks">
+              <li>Funcionalidades e APIs com Python</li>
+              <li>Interfaces com Angular, TypeScript, HTML e CSS</li>
+              <li>Modelagem e manutenção de bancos de dados</li>
+              <li>Integrações com serviços de terceiros, workflows e webhooks</li>
+              <li>Ambientes com Docker</li>
+              <li>Testes funcionais e de integração, correção de bugs e refatoração</li>
+              <li>Documentação técnica e revisão de código</li>
+            </ul>
           </div>
+        </li>
 
-        </article>
-
-
-        <!-- INSS -->
-        <article class="timeline-item reveal">
-
-          <span class="timeline-dot"></span>
-
-          <div class="timeline-date">
-            Nov/2024 — Ago/2026
+        <li class="ledger-row reveal">
+          <div class="ledger-when mono">
+            <span>Set. 2026</span>
+            <span>Out. 2026</span>
           </div>
-
-          <div>
-
-            <span class="project-kicker">
-              Experiência profissional
-            </span>
-
-            <h3>
-              Assistente Administrativo · Superintendência - INSS
-            </h3>
-
+          <div class="ledger-what">
+            <h3>Estagiário de Pesquisa e Desenvolvimento</h3>
+            <p class="ledger-org">FI Group · Híbrido</p>
+          </div>
+          <div class="ledger-body">
             <p>
-              Gestão de processos no sistema SEI, inclusão de dados em
-              plataformas governamentais (OFCWEB, SIGME e SCDP), elaboração
-              de planilhas com gráficos e fórmulas, criação de documentos
-              e apresentações institucionais.
+              Apoio à avaliação técnica de projetos de tecnologia: análise de
+              documentação, verificação de conformidade com a Lei do Bem e a Lei
+              de TICs, relatórios técnicos e conversa direta com clientes para
+              esclarecer dúvidas.
             </p>
-
           </div>
+        </li>
 
-        </article>
-
-
-        <!-- FORMAÇÃO -->
-        <article class="timeline-item reveal">
-
-          <span class="timeline-dot"></span>
-
-          <div class="timeline-date">
-            Cursando
+        <li class="ledger-row reveal">
+          <div class="ledger-when mono">
+            <span>Abr. 2024</span>
+            <span>Set. 2026</span>
           </div>
-
-          <div>
-
-            <span class="project-kicker">
-              Formação
-            </span>
-
-            <h3>
-              Análise e Desenvolvimento de Sistemas · UCB
-            </h3>
-
+          <div class="ledger-what">
+            <h3>Assistente Administrativo</h3>
+            <p class="ledger-org">INSS · Superintendência</p>
+          </div>
+          <div class="ledger-body">
             <p>
-              4º semestre, modalidade EAD, com formação direcionada ao
-              desenvolvimento de sistemas e tecnologias da informação.
+              Gestão de processos no SEI, lançamento de dados em sistemas do
+              governo (OFCWEB, SIGME, SCDP), relatórios, ofícios e planilhas em
+              Excel. Foi onde aprendi a lidar com prazos, burocracia e muita
+              informação ao mesmo tempo.
             </p>
-
           </div>
+        </li>
 
-        </article>
-
-      </div>
+      </ol>
 
     </section>
 
 
-    <!-- CURSOS -->
-    <section id="cursos" class="section container courses-section">
+    <!-- PROJETOS -->
+    <section id="projetos" class="section wrap">
 
-      <div class="section-heading reveal">
+      <header class="section-head">
+        <span class="section-index mono">02</span>
+        <h2>Projetos</h2>
+        <a class="github-cta" href="https://github.com/thiagocb2504?tab=repositories" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true" fill="currentColor">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+          </svg>
+          <span>Ver todos no GitHub</span>
+          <span class="github-cta-arrow" aria-hidden="true">↗</span>
+        </a>
+      </header>
 
-        <span class="section-number">05.</span>
+      <div class="featured">
 
-        <div>
-          <p class="overline">Aprendizado contínuo</p>
-          <h2>Cursos & formação complementar</h2>
+        <article class="feature reveal">
+          <div class="feature-figure" aria-hidden="true">
+            <p class="fig-label mono">fig. 1 · fluxo de um pagamento</p>
+            <ol class="flow mono">
+              <li><b>Factory</b> cria o pagamento</li>
+              <li><b>Chain</b> valida cliente → valor → saldo</li>
+              <li><b>Strategy</b> escolhe Pix, Boleto, Cartão ou PayPal</li>
+              <li><b>Adapter</b> conversa com o gateway externo</li>
+            </ol>
+          </div>
+          <div class="feature-text">
+            <p class="kicker mono">Java · Maven · 2026</p>
+            <h3>Sistema de Pagamentos com Design Patterns</h3>
+            <p>
+              Um mesmo pagamento passando por quatro padrões de projeto, cada um
+              com uma responsabilidade clara. Feito para entender na prática
+              quando cada padrão resolve um problema de verdade.
+            </p>
+            <a class="arrow-link" href="https://github.com/thiagocb2504/sistema-pagamentos-design-patterns"
+              target="_blank" rel="noopener">Ver código <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="feature reveal">
+          <div class="feature-figure" aria-hidden="true">
+            <p class="fig-label mono">fig. 2 · rotas da API</p>
+            <ul class="routes mono">
+              <li><b>POST</b><span>/usuario</span></li>
+              <li><b>GET</b><span>/usuario?email=</span></li>
+              <li><b>PUT</b><span>/usuario?id=</span></li>
+              <li><b>DELETE</b><span>/usuario?email=</span></li>
+            </ul>
+          </div>
+          <div class="feature-text">
+            <p class="kicker mono">Spring Boot · JPA · H2 · 2025</p>
+            <h3>Cadastro de Usuário, API REST</h3>
+            <p>
+              CRUD completo organizado em controller, service e repository, com
+              JPA/Hibernate, Lombok e banco H2 em memória. Meu primeiro projeto
+              Spring Boot de ponta a ponta.
+            </p>
+            <a class="arrow-link" href="https://github.com/thiagocb2504/cadastro-usuario" target="_blank"
+              rel="noopener">Ver código <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+      </div>
+
+      <ul class="index-list">
+
+        <li class="reveal">
+          <a href="https://github.com/thiagocb2504/projeto-cifra-cesar" target="_blank" rel="noopener">
+            <span class="il-year mono">2026</span>
+            <span class="il-title">Cifra de César</span>
+            <span class="il-desc">Descobre a chave de uma mensagem cifrada e decodifica. Ganhou uma interface em Swing além do pedido da atividade.</span>
+            <span class="il-tags mono">Java · Swing</span>
+            <span class="il-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li class="reveal">
+          <a href="https://github.com/thiagocb2504/calculadoraMAC" target="_blank" rel="noopener">
+            <span class="il-year mono">2026</span>
+            <span class="il-title">Calculadora MAC</span>
+            <span class="il-desc">Calculadora inspirada na do macOS, com a tela atualizada pelo padrão Observer.</span>
+            <span class="il-tags mono">Java · Swing · Observer</span>
+            <span class="il-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li class="reveal">
+          <a href="https://github.com/thiagocb2504/campo-minado-swing" target="_blank" rel="noopener">
+            <span class="il-year mono">2025</span>
+            <span class="il-title">Campo Minado</span>
+            <span class="il-desc">Começou no terminal e virou aplicação gráfica completa, reaproveitando o modelo orientado a objetos.</span>
+            <span class="il-tags mono">Java · Swing · POO</span>
+            <span class="il-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+        <li class="reveal">
+          <a href="https://github.com/ObarbosaDev/Banco-emC-Malvezzi" target="_blank" rel="noopener">
+            <span class="il-year mono">UCB</span>
+            <span class="il-title">Sistema Bancário em C</span>
+            <span class="il-desc">Projeto em equipe com contas, depósito, saque e transferência, versionado com Git.</span>
+            <span class="il-tags mono">C · Estruturas de dados</span>
+            <span class="il-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+
+      </ul>
+
+    </section>
+
+
+    <!-- STACK -->
+    <section id="stack" class="section wrap">
+
+      <header class="section-head">
+        <span class="section-index mono">03</span>
+        <h2>Stack</h2>
+      </header>
+
+      <div class="stack-grid reveal">
+
+        <div class="stack-col">
+          <h3 class="mono">Back-end</h3>
+          <ul>
+            <li>Java</li>
+            <li>Spring Boot</li>
+            <li>JPA / Hibernate</li>
+            <li>Python</li>
+            <li>APIs REST</li>
+            <li>Lombok · Maven</li>
+          </ul>
+        </div>
+
+        <div class="stack-col">
+          <h3 class="mono">Front-end</h3>
+          <ul>
+            <li>Angular</li>
+            <li>TypeScript</li>
+            <li>JavaScript</li>
+            <li>HTML · CSS</li>
+            <li>Java Swing</li>
+          </ul>
+        </div>
+
+        <div class="stack-col">
+          <h3 class="mono">Dados</h3>
+          <ul>
+            <li>SQL</li>
+            <li>MySQL</li>
+            <li>MongoDB</li>
+            <li>H2</li>
+          </ul>
+        </div>
+
+        <div class="stack-col">
+          <h3 class="mono">Ferramentas</h3>
+          <ul>
+            <li>Git · GitHub</li>
+            <li>Docker</li>
+            <li>Postman</li>
+            <li>IntelliJ · VS Code</li>
+            <li>Claude Code</li>
+          </ul>
+        </div>
+
+        <div class="stack-col">
+          <h3 class="mono">Jeito de trabalhar</h3>
+          <ul>
+            <li>Scrum · Kanban</li>
+            <li>Code review</li>
+            <li>Testes de integração</li>
+            <li>Documentação técnica</li>
+            <li><a href="#ia" class="stack-ai-link">IA no dia a dia</a></li>
+          </ul>
         </div>
 
       </div>
 
+      <article id="ia" class="ai-block reveal">
 
-      <div class="courses-grid">
-
-        <div class="course reveal">
-          <strong>Java com Inteligência Artificial</strong>
-          <span>Itaú · DIO · 45h</span>
+        <div class="ai-intro">
+          <p class="kicker mono">IA no dia a dia · Claude</p>
+          <h3>Uso IA como par de programação, não como piloto automático.</h3>
+          <p>
+            O Claude faz parte da minha rotina de desenvolvimento, principalmente
+            pelo Claude Code no terminal. Ele acelera o trabalho, mas a decisão
+            sobre o que entra no código e a revisão final continuam comigo.
+          </p>
         </div>
 
-        <div class="course reveal delay-1">
-          <strong>Oracle Java Foundations</strong>
-          <span>Oracle · 10h23 · 95% de acertos</span>
+        <ol class="ai-uses">
+          <li>
+            <h4>Entender código</h4>
+            <p>Mapear um projeto que eu não escrevi, achar onde uma regra mora e seguir o fluxo de uma requisição.</p>
+          </li>
+          <li>
+            <h4>Implementar e refatorar</h4>
+            <p>Transformar uma tarefa em código funcionando mais rápido e melhorar o que já existe aos poucos, sem quebrar o resto.</p>
+          </li>
+          <li>
+            <h4>Testar e revisar</h4>
+            <p>Gerar casos de teste, investigar bugs e pedir uma segunda leitura antes de abrir um pull request.</p>
+          </li>
+          <li>
+            <h4>Documentar</h4>
+            <p>Escrever documentação técnica, READMEs e descrições de PR claras para quem vem depois.</p>
+          </li>
+        </ol>
+
+      </article>
+
+    </section>
+
+
+    <!-- FORMAÇÃO -->
+    <section id="formacao" class="section wrap">
+
+      <header class="section-head">
+        <span class="section-index mono">04</span>
+        <h2>Formação</h2>
+      </header>
+
+      <div class="edu reveal">
+        <p class="kicker mono">Graduação · EAD · em andamento</p>
+        <h3>Análise e Desenvolvimento de Sistemas</h3>
+        <p>Universidade Católica de Brasília, 4º semestre</p>
+      </div>
+
+      <div class="courses reveal">
+
+        <div class="courses-head">
+          <h3>Cursos complementares</h3>
+          <p class="courses-total"><span class="serif-num">216</span> horas concluídas</p>
         </div>
 
-        <div class="course reveal delay-2">
-          <strong>Java COMPLETO</strong>
-          <span>Udemy · 77h</span>
-        </div>
-
-        <div class="course reveal">
-          <strong>Entendendo TypeScript</strong>
-          <span>Udemy · 11h</span>
-        </div>
-
-        <div class="course reveal delay-1">
-          <strong>Angular v18</strong>
-          <span>Kipper Dev · 1h</span>
-        </div>
-
-        <div class="course reveal delay-2">
-          <strong>Fundamentos de TI: Hardware e Software</strong>
-          <span>Fundação Bradesco · 7h</span>
-        </div>
-
-        <div class="course reveal">
-          <strong>Microsoft Excel — Básico ao Avançado</strong>
-          <span>Fundação Bradesco · 65h</span>
-        </div>
+        <table>
+          <caption class="sr-only">Cursos complementares concluídos</caption>
+          <thead>
+            <tr>
+              <th scope="col">Curso</th>
+              <th scope="col">Instituição</th>
+              <th scope="col" class="num">Horas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Java COMPLETO: do zero ao profissional</td>
+              <td>Udemy</td>
+              <td class="num">77h</td>
+            </tr>
+            <tr>
+              <td>Microsoft Excel, básico ao avançado</td>
+              <td>Fundação Bradesco</td>
+              <td class="num">65h</td>
+            </tr>
+            <tr>
+              <td>Bootcamp Itaú: Java com Inteligência Artificial</td>
+              <td>DIO</td>
+              <td class="num">45h</td>
+            </tr>
+            <tr>
+              <td>Entendendo TypeScript</td>
+              <td>Udemy</td>
+              <td class="num">11h</td>
+            </tr>
+            <tr>
+              <td>Oracle Java Foundations <span class="note">95% no assessment</span></td>
+              <td>Oracle</td>
+              <td class="num">10h</td>
+            </tr>
+            <tr>
+              <td>Fundamentos de TI: hardware e software</td>
+              <td>Fundação Bradesco</td>
+              <td class="num">7h</td>
+            </tr>
+            <tr>
+              <td>Angular v18</td>
+              <td>Kipper Dev</td>
+              <td class="num">1h</td>
+            </tr>
+          </tbody>
+        </table>
 
       </div>
 
@@ -690,60 +514,47 @@
 
 
     <!-- CONTATO -->
-    <section id="contato" class="section container contact-section reveal">
+    <section id="contato" class="contact wrap">
 
-      <span class="section-number">
-        06.
-      </span>
+      <p class="section-index mono">05 · Contato</p>
 
-      <p class="overline">
-        Vamos conversar?
-      </p>
-
-      <h2>
-        Vamos construir algo juntos.
+      <h2 class="contact-title">
+        Tem uma vaga, um projeto<br>
+        ou só quer <em>trocar uma ideia?</em>
       </h2>
 
-      <p>
-        Estou em constante evolução na área de desenvolvimento de software,
-        com foco em Java e Backend. Estou aberto a oportunidades que me
-        permitam ampliar minha experiência prática, contribuir com projetos
-        reais e continuar evoluindo como desenvolvedor.
-      </p>
-
-      <div class="hero-actions center-buttons">
-
-        <a class="btn btn-primary" href="mailto:thiagodacostab2504@gmail.com">
-          Enviar e-mail
-        </a>
-
-        <a class="btn btn-secondary" href="https://www.linkedin.com/in/thiago-da-costa-brito/" target="_blank"
-          rel="noopener">
-          LinkedIn ↗
-        </a>
-
+      <div class="contact-mail">
+        <a href="mailto:thiagodacostab2504@gmail.com" class="mail-link">thiagodacostab2504@gmail.com</a>
+        <button type="button" class="copy-btn mono" data-copy="thiagodacostab2504@gmail.com">
+          Copiar
+        </button>
+        <span class="copy-status" role="status" aria-live="polite"></span>
       </div>
+
+      <a class="btn btn-whatsapp" href="https://wa.me/5561999320341?text=Ol%C3%A1%2C%20Thiago!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar."
+        target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
+          <path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.5h-.01a9.43 9.43 0 01-4.8-1.32l-.35-.2-3.57.93.95-3.48-.22-.36a9.4 9.4 0 01-1.44-5.02c0-5.2 4.24-9.44 9.45-9.44 2.52 0 4.89.99 6.67 2.77a9.38 9.38 0 012.76 6.68c0 5.2-4.24 9.44-9.44 9.44zm8.04-17.48A11.3 11.3 0 0012.05.7C5.78.7.68 5.8.68 12.06c0 2 .52 3.96 1.52 5.68L.58 23.7l6.1-1.6a11.33 11.33 0 005.37 1.37h.01c6.26 0 11.36-5.1 11.37-11.37 0-3.03-1.18-5.89-3.34-8.04z" />
+        </svg>
+        Chamar no WhatsApp
+      </a>
+
+      <ul class="contact-links">
+        <li><a href="https://www.linkedin.com/in/thiago-da-costa-brito/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a></li>
+        <li><a href="https://github.com/thiagocb2504" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></li>
+        <li><a href="assets/CV_TI_THIAGO_BRITO.pdf" target="_blank" rel="noopener">Currículo <span aria-hidden="true">↗</span></a></li>
+      </ul>
 
     </section>
 
   </main>
 
 
-  <!-- FOOTER -->
-  <footer class="footer container">
-
-    <p>
-      Desenvolvido por
-      <strong>Thiago Brito</strong>
-      · 2026
-    </p>
-
-    <a href="#topo" class="back-to-top">
-      Voltar ao topo ↑
-    </a>
-
+  <footer class="footer wrap mono">
+    <p>Thiago Brito · <span class="year">2026</span></p>
+    <p>Escrito à mão em HTML, CSS e JavaScript</p>
+    <a href="#topo">Voltar ao topo ↑</a>
   </footer>
-
 
   <script src="script.js"></script>
 
