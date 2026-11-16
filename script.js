@@ -42,62 +42,6 @@ document.addEventListener('keydown', (event) => {
 
 
 /* =========================
-   TEMA CLARO / ESCURO
-========================= */
-
-const root = document.documentElement;
-const themeButton = document.querySelector('.theme-toggle');
-const themeMetas = document.querySelectorAll('meta[name="theme-color"]');
-const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-function savedTheme() {
-  try {
-    return localStorage.getItem('theme');
-  } catch {
-    return null;
-  }
-}
-
-function applyTheme(theme) {
-  root.dataset.theme = theme;
-
-  themeButton.setAttribute(
-    'aria-label',
-    theme === 'dark' ? 'Ativar tema claro' : 'Ativar tema escuro'
-  );
-
-  const paper = getComputedStyle(root).getPropertyValue('--paper').trim();
-  themeMetas.forEach((meta) => meta.setAttribute('content', paper));
-}
-
-themeButton.addEventListener('click', () => {
-  const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-
-  try {
-    localStorage.setItem('theme', next);
-  } catch {
-    // sem armazenamento: o tema vale só para esta visita
-  }
-
-  if (document.startViewTransition && !reduceMotion.matches) {
-    document.startViewTransition(() => applyTheme(next));
-  } else {
-    applyTheme(next);
-  }
-});
-
-// sem escolha salva, acompanha o tema do sistema
-systemDark.addEventListener('change', (event) => {
-  if (!savedTheme()) {
-    applyTheme(event.matches ? 'dark' : 'light');
-  }
-});
-
-applyTheme(root.dataset.theme || (systemDark.matches ? 'dark' : 'light'));
-
-
-/* =========================
    HORA EM BRASÍLIA
 ========================= */
 
@@ -136,6 +80,28 @@ if ('IntersectionObserver' in window) {
   revealItems.forEach((item) => revealObserver.observe(item));
 } else {
   revealItems.forEach((item) => item.classList.add('visible'));
+}
+
+
+/* =========================
+   TÍTULOS EM NEON
+========================= */
+
+const neonTitles = document.querySelectorAll('.section-head h2');
+
+if ('IntersectionObserver' in window) {
+  const neonObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('lit');
+        neonObserver.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -15% 0px' });
+
+  neonTitles.forEach((titleEl) => neonObserver.observe(titleEl));
+} else {
+  neonTitles.forEach((titleEl) => titleEl.classList.add('lit'));
 }
 
 
@@ -186,3 +152,130 @@ copyButton.addEventListener('click', async () => {
 ========================= */
 
 document.querySelector('.year').textContent = new Date().getFullYear();
+
+
+/* =========================
+   TABULEIRO DO CAMPO MINADO
+========================= */
+
+function renderBoard(board) {
+  const rows = board.dataset.board.split('|');
+  board.style.setProperty('--cols', rows[0].length);
+
+  rows.join('').split('').forEach((cell) => {
+    const span = document.createElement('span');
+
+    if (cell === 'M') {
+      span.className = 'flag';
+      span.textContent = 'M';
+    } else if (cell !== '#') {
+      span.className = 'open' + (cell === '.' ? '' : ` n${cell}`);
+      span.textContent = cell === '.' ? '' : cell;
+    }
+
+    board.append(span);
+  });
+}
+
+document.querySelectorAll('.mock-mines').forEach(renderBoard);
+
+
+/* =========================
+   DETALHES DOS PROJETOS
+========================= */
+
+const dialog = document.querySelector('#project-dialog');
+const dialogMedia = dialog.querySelector('.pdialog-media');
+const dialogContent = dialog.querySelector('.pdialog-content');
+
+function buildGallery(figures) {
+  const tabs = document.createElement('div');
+  tabs.className = 'gallery-tabs';
+  tabs.setAttribute('role', 'tablist');
+  tabs.setAttribute('aria-label', 'Telas do projeto');
+
+  const frame = document.createElement('div');
+  frame.className = 'frame frame--browser';
+  frame.innerHTML = `
+    <div class="frame-bar">
+      <span class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="frame-url mono"></span>
+    </div>`;
+
+  const url = frame.querySelector('.frame-url');
+
+  function show(index) {
+    const figure = figures[index];
+    url.textContent = figure.dataset.url;
+    frame.querySelector('img')?.remove();
+    frame.append(figure.querySelector('img').cloneNode());
+
+    tabs.querySelectorAll('button').forEach((tab, i) => {
+      tab.setAttribute('aria-selected', String(i === index));
+    });
+  }
+
+  figures.forEach((figure, index) => {
+    const tab = document.createElement('button');
+    tab.type = 'button';
+    tab.setAttribute('role', 'tab');
+    tab.textContent = figure.dataset.label;
+    tab.addEventListener('click', () => show(index));
+    tabs.append(tab);
+  });
+
+  show(0);
+  return figures.length > 1 ? [tabs, frame] : [frame];
+}
+
+function openProject(card) {
+  const name = card.dataset.project;
+  const template = document.querySelector(`#projeto-${name}`);
+
+  if (!template) {
+    return;
+  }
+
+  const content = template.content.cloneNode(true);
+  const figures = [...content.querySelectorAll('[data-slot="gallery"] figure')];
+
+  // projetos com telas reais usam a galeria; os outros reaproveitam a ilustração do card
+  dialogMedia.replaceChildren(
+    ...(figures.length
+      ? buildGallery(figures)
+      : [card.querySelector('.pcard-media > .frame').cloneNode(true)])
+  );
+
+  dialogContent.replaceChildren(content.querySelector('[data-slot="content"]'));
+  dialog.showModal();
+  dialog.scrollTop = 0;
+
+  history.replaceState(null, '', `#projeto-${name}`);
+}
+
+document.querySelectorAll('.pcard').forEach((card) => {
+  card.querySelector('.pcard-open').addEventListener('click', () => openProject(card));
+});
+
+dialog.querySelector('.pdialog-close').addEventListener('click', () => dialog.close());
+
+// clique fora da caixa fecha
+dialog.addEventListener('click', (event) => {
+  if (event.target === dialog) {
+    dialog.close();
+  }
+});
+
+dialog.addEventListener('close', () => {
+  history.replaceState(null, '', '#projetos');
+});
+
+// link direto para um projeto, ex.: #projeto-vinivinhos
+const linkedCard = location.hash.startsWith('#projeto-')
+  ? document.querySelector(`.pcard[data-project="${CSS.escape(location.hash.slice(9))}"]`)
+  : null;
+
+if (linkedCard) {
+  document.querySelector('#projetos').scrollIntoView();
+  openProject(linkedCard);
+}

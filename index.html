@@ -16,8 +16,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://thiagocb2504.github.io/portfolio-thiago/" />
 
-  <meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#14140f" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#14140f" />
 
   <link rel="icon"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2316150f'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Georgia,serif' font-style='italic' font-size='34' fill='%23f3efe6'%3ETb%3C/text%3E%3C/svg%3E" />
@@ -30,17 +29,7 @@
 
   <link rel="stylesheet" href="style.css" />
 
-  <script>
-    document.documentElement.classList.add('js');
-
-    // aplica o tema antes da pintura para não piscar
-    (function () {
-      var saved = null;
-      try { saved = localStorage.getItem('theme'); } catch (e) { }
-      var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
-    })();
-  </script>
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 
 <body id="topo">
@@ -50,7 +39,10 @@
   <header class="header">
     <nav class="nav wrap" aria-label="Navegação principal">
 
-      <a href="#topo" class="wordmark">Thiago Brito</a>
+      <a href="#topo" class="wordmark">
+        <span class="wordmark-text">Thiago Brito</span>
+        <span class="wordmark-electric" aria-hidden="true"></span>
+      </a>
 
       <ul class="nav-links" id="menu">
         <li><a href="#experiencia">Experiência</a></li>
@@ -61,18 +53,6 @@
       </ul>
 
       <div class="nav-actions">
-
-        <button class="theme-toggle" type="button" aria-label="Ativar tema escuro">
-          <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none"
-            stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z" />
-          </svg>
-          <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none"
-            stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-            <circle cx="12" cy="12" r="4" />
-            <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" />
-          </svg>
-        </button>
 
         <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
           <span></span>
@@ -95,7 +75,10 @@
         <span>Brasília, DF · <time class="clock" aria-label="Horário local em Brasília">--:--</time></span>
       </p>
 
-      <h1 class="intro-name">Thiago <em>Brito</em></h1>
+      <div class="intro-title">
+        <h1 class="intro-name">Thiago <em>Brito</em></h1>
+        <div class="intro-electric" aria-hidden="true"></div>
+      </div>
 
       <div class="intro-grid">
 
@@ -239,106 +222,210 @@
         </a>
       </header>
 
-      <div class="featured">
+      <div class="projects-grid">
 
-        <article class="feature reveal">
-          <div class="feature-figure" aria-hidden="true">
-            <p class="fig-label mono">fig. 1 · fluxo de um pagamento</p>
-            <ol class="flow mono">
-              <li><b>Chain</b> valida valor → cliente → saldo</li>
-              <li><b>Factory</b> cria o método de pagamento</li>
-              <li><b>Strategy</b> executa Pix, Cartão, Boleto ou PayPal</li>
-              <li><b>Adapter</b> conversa com o gateway do PayPal</li>
-            </ol>
-            <p class="fig-modes mono">
-              <span>Console</span>
-              <span>API REST</span>
-              <span>Interface web</span>
-            </p>
+        <!-- VINI VINHOS -->
+        <article class="pcard pcard--wide reveal" data-project="vinivinhos">
+          <div class="pcard-media">
+            <div class="frame frame--browser">
+              <div class="frame-bar">
+                <span class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="frame-url mono">vinivinhos.com.br</span>
+              </div>
+              <img src="assets/projetos/vinivinhos-inicio.webp" width="1200" height="577" loading="lazy"
+                decoding="async" alt="Página inicial do site da Vini Vinhos, com uma foto da loja ao fundo">
+            </div>
           </div>
-          <div class="feature-text">
-            <p class="kicker mono">Java 21 · Spring Boot · React · TypeScript · 2026</p>
-            <h3>Sistema de Pagamentos com Design Patterns</h3>
-            <p>
-              Um mesmo pagamento passando por quatro padrões de projeto, cada um
-              com uma responsabilidade clara. Começou no console e ganhou uma API
-              em Spring Boot que devolve o que cada classe fez, além de uma
-              interface em React com slides sobre os padrões e um simulador que
-              anima cada etapa do fluxo.
+          <div class="pcard-body">
+            <p class="pcard-meta mono"><span class="pcard-badge">No ar</span>2026 · Site, catálogo e painel</p>
+            <h3><button type="button" class="pcard-open" aria-haspopup="dialog">Vini Vinhos</button></h3>
+            <p class="pcard-desc">
+              O site da loja de vinhos do meu pai, na Asa Norte. Clientes navegam pelo
+              catálogo e pedem pelo WhatsApp; meu pai cadastra os vinhos sozinho por um
+              painel que eu fiz.
             </p>
-            <a class="arrow-link" href="https://github.com/thiagocb2504/sistema-pagamentos-design-patterns"
-              target="_blank" rel="noopener">Ver código <span aria-hidden="true">→</span></a>
+            <p class="pcard-tags mono">HTML · CSS · JavaScript · Apps Script · Cloudflare</p>
+            <span class="pcard-more mono" aria-hidden="true">Ver detalhes <b>+</b></span>
           </div>
         </article>
 
-        <article class="feature reveal">
-          <div class="feature-figure" aria-hidden="true">
-            <p class="fig-label mono">fig. 2 · rotas da API</p>
-            <ul class="routes mono">
-              <li><b>POST</b><span>/usuario</span></li>
-              <li><b>GET</b><span>/usuario?email=</span></li>
-              <li><b>PUT</b><span>/usuario?id=</span></li>
-              <li><b>DELETE</b><span>/usuario?email=</span></li>
-            </ul>
+        <!-- PAGAMENTOS -->
+        <article class="pcard reveal" data-project="pagamentos">
+          <div class="pcard-media">
+            <div class="frame frame--browser">
+              <div class="frame-bar">
+                <span class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="frame-url mono">simulador de pagamentos</span>
+              </div>
+              <img src="assets/projetos/pagamentos-simulador.webp" width="1200" height="577" loading="lazy"
+                decoding="async" alt="Simulador mostrando cada classe que participou de um pagamento via PayPal">
+            </div>
           </div>
-          <div class="feature-text">
-            <p class="kicker mono">Spring Boot · JPA · H2 · 2025</p>
-            <h3>Cadastro de Usuário, API REST</h3>
-            <p>
-              CRUD completo organizado em controller, service e repository, com
-              JPA/Hibernate, Lombok e banco H2 em memória. Meu primeiro projeto
+          <div class="pcard-body">
+            <p class="pcard-meta mono"><span class="pcard-badge">Demo ao vivo</span>2026 · Java, API e web</p>
+            <h3><button type="button" class="pcard-open" aria-haspopup="dialog">Sistema de Pagamentos</button></h3>
+            <p class="pcard-desc">
+              Quatro design patterns no mesmo fluxo de pagamento, com API em Spring Boot e
+              um simulador em React que mostra cada etapa.
+            </p>
+            <p class="pcard-tags mono">Java 21 · Spring Boot · React · TypeScript</p>
+            <span class="pcard-more mono" aria-hidden="true">Ver detalhes <b>+</b></span>
+          </div>
+        </article>
+
+        <!-- CADASTRO -->
+        <article class="pcard reveal" data-project="cadastro">
+          <div class="pcard-media">
+            <div class="frame frame--dark" aria-hidden="true">
+              <div class="frame-bar">
+                <span class="frame-dots"><i></i><i></i><i></i></span>
+                <span class="frame-url mono">localhost:8080</span>
+              </div>
+              <div class="mock-api mono">
+                <p class="req"><b class="verb verb--post">POST</b>/usuario</p>
+                <p class="json">{ "nome": "Thiago", "email": "thiago@email.com" }</p>
+                <p class="res"><span>200</span> OK</p>
+                <p class="req"><b class="verb verb--get">GET</b>/usuario?email=thiago@email.com</p>
+                <p class="json">{ "id": 1, "nome": "Thiago", "email": "thiago@email.com" }</p>
+                <p class="res"><span>200</span> OK</p>
+              </div>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <p class="pcard-meta mono">2025 · API REST</p>
+            <h3><button type="button" class="pcard-open" aria-haspopup="dialog">Cadastro de Usuário</button></h3>
+            <p class="pcard-desc">
+              CRUD completo em camadas, com JPA/Hibernate e banco H2. Meu primeiro projeto
               Spring Boot de ponta a ponta.
             </p>
-            <a class="arrow-link" href="https://github.com/thiagocb2504/cadastro-usuario" target="_blank"
-              rel="noopener">Ver código <span aria-hidden="true">→</span></a>
+            <p class="pcard-tags mono">Java · Spring Boot · JPA · H2</p>
+            <span class="pcard-more mono" aria-hidden="true">Ver detalhes <b>+</b></span>
+          </div>
+        </article>
+
+        <!-- CIFRA DE CÉSAR -->
+        <article class="pcard reveal" data-project="cifra">
+          <div class="pcard-media">
+            <div class="frame frame--swing" aria-hidden="true">
+              <div class="frame-bar">
+                <span class="frame-title">Cifra de César</span>
+                <span class="frame-win"><i></i><i></i><i></i></span>
+              </div>
+              <div class="mock-cifra">
+                <p class="cifra-title">CRIPTOGRAFIA - CIFRA DE CÉSAR</p>
+                <div class="cifra-controls">
+                  <span>Chave:</span>
+                  <span class="cifra-key">3</span>
+                  <span class="cifra-btn">Criptografar</span>
+                  <span class="cifra-btn">Descriptografar</span>
+                </div>
+                <div class="cifra-box"><span>Texto de Entrada</span><p>VENI VIDI VICI</p></div>
+                <div class="cifra-box"><span>Resultado</span><p>YHQL YLGL YLFL</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <p class="pcard-meta mono">2026 · Java desktop</p>
+            <h3><button type="button" class="pcard-open" aria-haspopup="dialog">Cifra de César</button></h3>
+            <p class="pcard-desc">
+              Descobre a chave de uma mensagem cifrada e decodifica. Ganhou uma interface
+              em Swing além do que a atividade pedia.
+            </p>
+            <p class="pcard-tags mono">Java · Swing</p>
+            <span class="pcard-more mono" aria-hidden="true">Ver detalhes <b>+</b></span>
+          </div>
+        </article>
+
+        <!-- CALCULADORA -->
+        <article class="pcard reveal" data-project="calculadora">
+          <div class="pcard-media">
+            <div class="frame frame--calc" aria-hidden="true">
+              <div class="frame-bar">
+                <span class="frame-dots frame-dots--mac"><i></i><i></i><i></i></span>
+              </div>
+              <div class="mock-calc">
+                <p class="calc-display">120,5</p>
+                <div class="calc-keys">
+                  <span class="k k--dark k--wide">AC</span><span class="k k--dark">±</span><span class="k k--op">/</span>
+                  <span class="k">7</span><span class="k">8</span><span class="k">9</span><span class="k k--op">*</span>
+                  <span class="k">4</span><span class="k">5</span><span class="k">6</span><span class="k k--op">-</span>
+                  <span class="k">1</span><span class="k">2</span><span class="k">3</span><span class="k k--op">+</span>
+                  <span class="k k--wide">0</span><span class="k">,</span><span class="k k--op">=</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <p class="pcard-meta mono">2026 · Java desktop</p>
+            <h3><button type="button" class="pcard-open" aria-haspopup="dialog">Calculadora MAC</button></h3>
+            <p class="pcard-desc">
+              Calculadora inspirada na do macOS, com o visor atualizado pelo padrão
+              Observer.
+            </p>
+            <p class="pcard-tags mono">Java · Swing · Observer</p>
+            <span class="pcard-more mono" aria-hidden="true">Ver detalhes <b>+</b></span>
+          </div>
+        </article>
+
+        <!-- CAMPO MINADO -->
+        <article class="pcard reveal" data-project="campo-minado">
+          <div class="pcard-media">
+            <div class="frame frame--swing" aria-hidden="true">
+              <div class="frame-bar">
+                <span class="frame-title">Campo Minado</span>
+                <span class="frame-win"><i></i><i></i><i></i></span>
+              </div>
+              <div class="mock-mines mono"
+                data-board="##############|###M#MM#######|#M312221######|##2....1######|##21...1######|###2...112####|###2.....1####|###1.....1####">
+              </div>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <p class="pcard-meta mono">2025 · Java desktop</p>
+            <h3><button type="button" class="pcard-open" aria-haspopup="dialog">Campo Minado</button></h3>
+            <p class="pcard-desc">
+              Começou no terminal e virou aplicação gráfica completa, reaproveitando o
+              mesmo modelo orientado a objetos.
+            </p>
+            <p class="pcard-tags mono">Java · Swing · POO</p>
+            <span class="pcard-more mono" aria-hidden="true">Ver detalhes <b>+</b></span>
+          </div>
+        </article>
+
+        <!-- BANCO EM C -->
+        <article class="pcard reveal" data-project="banco">
+          <div class="pcard-media">
+            <div class="frame frame--dark" aria-hidden="true">
+              <div class="frame-bar">
+                <span class="frame-dots"><i></i><i></i><i></i></span>
+                <span class="frame-url mono">./banco</span>
+              </div>
+              <pre class="mock-term mono">========== BANCO MALVEZZI ==========
+1. Abrir conta
+2. Encerrar conta
+3. Consultar cliente
+5. Depositar
+6. Sacar
+7. Consultar saldo
+10. Transferir entre contas
+0. Sair
+=====================================
+Opcao: <span class="caret"></span></pre>
+            </div>
+          </div>
+          <div class="pcard-body">
+            <p class="pcard-meta mono">UCB · Projeto em equipe</p>
+            <h3><button type="button" class="pcard-open" aria-haspopup="dialog">Banco Malvezzi, em C</button></h3>
+            <p class="pcard-desc">
+              Simulador bancário de terminal feito em equipe, com contas, transferências e
+              dados salvos em arquivos CSV.
+            </p>
+            <p class="pcard-tags mono">C11 · Make · Estruturas de dados</p>
+            <span class="pcard-more mono" aria-hidden="true">Ver detalhes <b>+</b></span>
           </div>
         </article>
 
       </div>
-
-      <ul class="index-list">
-
-        <li class="reveal">
-          <a href="https://github.com/thiagocb2504/projeto-cifra-cesar" target="_blank" rel="noopener">
-            <span class="il-year mono">2026</span>
-            <span class="il-title">Cifra de César</span>
-            <span class="il-desc">Descobre a chave de uma mensagem cifrada e decodifica. Ganhou uma interface em Swing além do pedido da atividade.</span>
-            <span class="il-tags mono">Java · Swing</span>
-            <span class="il-arrow" aria-hidden="true">↗</span>
-          </a>
-        </li>
-
-        <li class="reveal">
-          <a href="https://github.com/thiagocb2504/calculadoraMAC" target="_blank" rel="noopener">
-            <span class="il-year mono">2026</span>
-            <span class="il-title">Calculadora MAC</span>
-            <span class="il-desc">Calculadora inspirada na do macOS, com a tela atualizada pelo padrão Observer.</span>
-            <span class="il-tags mono">Java · Swing · Observer</span>
-            <span class="il-arrow" aria-hidden="true">↗</span>
-          </a>
-        </li>
-
-        <li class="reveal">
-          <a href="https://github.com/thiagocb2504/campo-minado-swing" target="_blank" rel="noopener">
-            <span class="il-year mono">2025</span>
-            <span class="il-title">Campo Minado</span>
-            <span class="il-desc">Começou no terminal e virou aplicação gráfica completa, reaproveitando o modelo orientado a objetos.</span>
-            <span class="il-tags mono">Java · Swing · POO</span>
-            <span class="il-arrow" aria-hidden="true">↗</span>
-          </a>
-        </li>
-
-        <li class="reveal">
-          <a href="https://github.com/ObarbosaDev/Banco-emC-Malvezzi" target="_blank" rel="noopener">
-            <span class="il-year mono">UCB</span>
-            <span class="il-title">Sistema Bancário em C</span>
-            <span class="il-desc">Projeto em equipe com contas, depósito, saque e transferência, versionado com Git.</span>
-            <span class="il-tags mono">C · Estruturas de dados</span>
-            <span class="il-arrow" aria-hidden="true">↗</span>
-          </a>
-        </li>
-
-      </ul>
 
     </section>
 
@@ -558,6 +645,277 @@
   </main>
 
 
+  <!-- DETALHES DOS PROJETOS -->
+  <dialog class="pdialog" id="project-dialog" aria-labelledby="pdialog-title">
+    <div class="pdialog-inner">
+      <button type="button" class="pdialog-close" aria-label="Fechar detalhes do projeto">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor"
+          stroke-width="1.6" stroke-linecap="round">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+      <div class="pdialog-media"></div>
+      <div class="pdialog-content"></div>
+    </div>
+  </dialog>
+
+  <template id="projeto-vinivinhos">
+    <div data-slot="gallery">
+      <figure data-label="Início" data-url="vinivinhos.com.br">
+        <img src="assets/projetos/vinivinhos-inicio.webp" width="1200" height="577"
+          alt="Página inicial do site da Vini Vinhos, com uma foto da loja ao fundo">
+      </figure>
+      <figure data-label="Catálogo" data-url="vinivinhos.com.br/catalogo">
+        <img src="assets/projetos/vinivinhos-catalogo.webp" width="1200" height="577"
+          alt="Catálogo com busca, filtros por tipo e país e cards de garrafas">
+      </figure>
+    </div>
+    <div data-slot="content">
+      <p class="kicker mono">2026 · Projeto real, em produção</p>
+      <h2 id="pdialog-title">Vini Vinhos</h2>
+      <div class="pdialog-cols">
+        <div class="pdialog-text">
+          <p>
+            O site da Vini Vinhos, a loja de vinhos do meu pai na Asa Norte, em Brasília.
+            Começou como um projeto simples e virou o site oficial da loja, que está no ar
+            e é usado no dia a dia.
+          </p>
+          <p>
+            Quem visita encontra o catálogo com busca e filtros e faz o pedido direto pelo
+            WhatsApp. Por trás, meu pai cadastra e edita os vinhos sozinho num painel
+            administrativo, sem precisar mexer em código.
+          </p>
+          <h3>O que eu fiz</h3>
+          <ul class="ticks">
+            <li>Catálogo com busca por nome, uva, país ou região e filtros por tipo e país</li>
+            <li>Painel com login para cadastrar, editar e remover vinhos</li>
+            <li>Fotos convertidas para WebP com o fundo removido no próprio navegador</li>
+            <li>Planilha do Google como banco de dados, gravada por um Apps Script que confere a senha antes de cada alteração</li>
+            <li>Destaques da página inicial escolhidos pelos vinhos mais pedidos</li>
+            <li>Prévia de link por vinho no WhatsApp, com uma Cloudflare Pages Function</li>
+            <li>Tema claro e escuro, SEO e cabeçalhos de segurança</li>
+          </ul>
+        </div>
+        <aside class="pdialog-facts">
+          <h3 class="mono">Stack</h3>
+          <p>HTML · CSS · JavaScript · Google Apps Script · Google Sheets · Cloudflare Pages</p>
+          <div class="pdialog-actions">
+            <a class="btn btn-solid" href="https://vinivinhos.com.br/" target="_blank" rel="noopener">Ver site no ar ↗</a>
+          </div>
+          <p class="pdialog-note">O código fica num repositório privado.</p>
+        </aside>
+      </div>
+    </div>
+  </template>
+
+  <template id="projeto-pagamentos">
+    <div data-slot="gallery">
+      <figure data-label="Simulador" data-url="simulador de pagamentos">
+        <img src="assets/projetos/pagamentos-simulador.webp" width="1200" height="577"
+          alt="Simulador mostrando cada classe que participou de um pagamento via PayPal">
+      </figure>
+      <figure data-label="Apresentação" data-url="apresentação · 9 slides">
+        <img src="assets/projetos/pagamentos-capa.webp" width="1200" height="577"
+          alt="Capa da apresentação em slides sobre os quatro padrões de projeto">
+      </figure>
+    </div>
+    <div data-slot="content">
+      <p class="kicker mono">2026 · Java 21, Spring Boot e React</p>
+      <h2 id="pdialog-title">Sistema de Pagamentos com Design Patterns</h2>
+      <div class="pdialog-cols">
+        <div class="pdialog-text">
+          <p>
+            Um mesmo pagamento passando por quatro padrões de projeto, cada um com uma
+            responsabilidade clara. Feito para entender na prática quando cada padrão
+            resolve um problema de verdade.
+          </p>
+          <ol class="flow mono">
+            <li><b>Chain</b> valida valor → cliente → saldo</li>
+            <li><b>Factory</b> cria o método de pagamento</li>
+            <li><b>Strategy</b> executa Pix, Cartão, Boleto ou PayPal</li>
+            <li><b>Adapter</b> conversa com o gateway do PayPal</li>
+          </ol>
+          <h3>Três formas de usar</h3>
+          <ul class="ticks">
+            <li>Console, o exemplo original, que imprime o fluxo no terminal</li>
+            <li>API REST em Spring Boot que executa o fluxo e devolve o que cada classe fez</li>
+            <li>Interface em React com 9 slides sobre os padrões e um simulador com cenários prontos</li>
+            <li>Sem o back-end no ar, o simulador usa uma versão do fluxo em TypeScript</li>
+          </ul>
+        </div>
+        <aside class="pdialog-facts">
+          <h3 class="mono">Stack</h3>
+          <p>Java 21 · Spring Boot 3.5 · Maven · React 19 · TypeScript · Vite · Tailwind CSS</p>
+          <div class="pdialog-actions">
+            <a class="btn btn-solid" href="https://thiagocb2504.github.io/sistema-pagamentos-design-patterns/"
+              target="_blank" rel="noopener">Ver demo ao vivo ↗</a>
+            <a class="btn btn-line" href="https://github.com/thiagocb2504/sistema-pagamentos-design-patterns"
+              target="_blank" rel="noopener">Ver código ↗</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </template>
+
+  <template id="projeto-cadastro">
+    <div data-slot="content">
+      <p class="kicker mono">2025 · API REST</p>
+      <h2 id="pdialog-title">Cadastro de Usuário</h2>
+      <div class="pdialog-cols">
+        <div class="pdialog-text">
+          <p>
+            CRUD completo de usuários organizado em controller, service e repository, com
+            JPA/Hibernate, Lombok e banco H2 em memória. Meu primeiro projeto Spring Boot
+            de ponta a ponta.
+          </p>
+          <ul class="routes mono">
+            <li><b>POST</b><span>/usuario</span></li>
+            <li><b>GET</b><span>/usuario?email=</span></li>
+            <li><b>PUT</b><span>/usuario?id=</span></li>
+            <li><b>DELETE</b><span>/usuario?email=</span></li>
+          </ul>
+          <h3>O que eu pratiquei</h3>
+          <ul class="ticks">
+            <li>Arquitetura em camadas, cada uma com uma responsabilidade</li>
+            <li>Mapeamento de entidade com JPA e e-mail único no banco</li>
+            <li>Respostas HTTP com ResponseEntity</li>
+          </ul>
+        </div>
+        <aside class="pdialog-facts">
+          <h3 class="mono">Stack</h3>
+          <p>Java · Spring Boot · JPA/Hibernate · H2 · Lombok · Maven</p>
+          <div class="pdialog-actions">
+            <a class="btn btn-solid" href="https://github.com/thiagocb2504/cadastro-usuario" target="_blank"
+              rel="noopener">Ver código ↗</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </template>
+
+  <template id="projeto-cifra">
+    <div data-slot="content">
+      <p class="kicker mono">2026 · Projeto acadêmico</p>
+      <h2 id="pdialog-title">Cifra de César</h2>
+      <div class="pdialog-cols">
+        <div class="pdialog-text">
+          <p>
+            A atividade era analisar um programa Java que cifrava mensagens sem revelar a
+            chave, descobrir qual era a chave e decodificar o texto. Além do que foi
+            pedido, fiz uma interface em Swing para cifrar e decifrar qualquer mensagem.
+          </p>
+          <h3>O que eu pratiquei</h3>
+          <ul class="ticks">
+            <li>Lógica de criptografia e descriptografia por deslocamento</li>
+            <li>Manipulação de strings e estruturas de repetição</li>
+            <li>Interface gráfica com Swing</li>
+          </ul>
+        </div>
+        <aside class="pdialog-facts">
+          <h3 class="mono">Stack</h3>
+          <p>Java · Swing</p>
+          <div class="pdialog-actions">
+            <a class="btn btn-solid" href="https://github.com/thiagocb2504/projeto-cifra-cesar" target="_blank"
+              rel="noopener">Ver código ↗</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </template>
+
+  <template id="projeto-calculadora">
+    <div data-slot="content">
+      <p class="kicker mono">2026 · Java desktop</p>
+      <h2 id="pdialog-title">Calculadora MAC</h2>
+      <div class="pdialog-cols">
+        <div class="pdialog-text">
+          <p>
+            Calculadora com a cara da do macOS, feita durante o curso de Java. O visor é
+            um observador da memória da calculadora: quando um botão muda o valor, o
+            visor é avisado e se atualiza sozinho.
+          </p>
+          <h3>O que tem</h3>
+          <ul class="ticks">
+            <li>Operações básicas, números decimais, AC e troca de sinal</li>
+            <li>Padrão Observer separando a lógica da interface</li>
+            <li>Barra de título própria com os três botões do macOS</li>
+          </ul>
+        </div>
+        <aside class="pdialog-facts">
+          <h3 class="mono">Stack</h3>
+          <p>Java · Swing · Observer</p>
+          <div class="pdialog-actions">
+            <a class="btn btn-solid" href="https://github.com/thiagocb2504/calculadoraMAC" target="_blank"
+              rel="noopener">Ver código ↗</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </template>
+
+  <template id="projeto-campo-minado">
+    <div data-slot="content">
+      <p class="kicker mono">2025 · Java desktop</p>
+      <h2 id="pdialog-title">Campo Minado</h2>
+      <div class="pdialog-cols">
+        <div class="pdialog-text">
+          <p>
+            Fiz primeiro a versão de terminal e depois levei o mesmo modelo para uma
+            interface gráfica em Swing, com um tabuleiro de 16 por 30 campos e 50 minas.
+          </p>
+          <h3>O que eu pratiquei</h3>
+          <ul class="ticks">
+            <li>Modelo orientado a objetos reaproveitado entre console e interface gráfica</li>
+            <li>Eventos de campo com o padrão Observer</li>
+            <li>Marcar, abrir e explodir campos com o mouse</li>
+          </ul>
+        </div>
+        <aside class="pdialog-facts">
+          <h3 class="mono">Stack</h3>
+          <p>Java · Swing · POO</p>
+          <div class="pdialog-actions">
+            <a class="btn btn-solid" href="https://github.com/thiagocb2504/campo-minado-swing" target="_blank"
+              rel="noopener">Ver código ↗</a>
+            <a class="btn btn-line" href="https://github.com/thiagocb2504/campo-minado-console" target="_blank"
+              rel="noopener">Versão de terminal ↗</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </template>
+
+  <template id="projeto-banco">
+    <div data-slot="content">
+      <p class="kicker mono">UCB · Projeto em equipe</p>
+      <h2 id="pdialog-title">Banco Malvezzi, em C</h2>
+      <div class="pdialog-cols">
+        <div class="pdialog-text">
+          <p>
+            Simulador bancário de terminal feito em equipe na faculdade. Cobre o ciclo de
+            uma conta: abertura, depósito, saque, transferência, pagamento e encerramento,
+            com os dados salvos em arquivos CSV.
+          </p>
+          <h3>Destaques</h3>
+          <ul class="ticks">
+            <li>Dinheiro guardado em centavos inteiros, sem erro de arredondamento</li>
+            <li>Código dividido em módulos de interface, regras de negócio e persistência</li>
+            <li>Validações de CPF e conta únicos, datas e saldo não negativo</li>
+            <li>Versionamento em equipe com Git e build com Make</li>
+          </ul>
+        </div>
+        <aside class="pdialog-facts">
+          <h3 class="mono">Stack</h3>
+          <p>C11 · GCC · GNU Make · Git</p>
+          <div class="pdialog-actions">
+            <a class="btn btn-solid" href="https://github.com/ObarbosaDev/Banco-emC-Malvezzi" target="_blank"
+              rel="noopener">Ver código ↗</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </template>
+
+
   <footer class="footer wrap mono">
     <p>Thiago Brito · <span class="year">2026</span></p>
     <p>Escrito à mão em HTML, CSS e JavaScript</p>
@@ -565,6 +923,10 @@
   </footer>
 
   <script src="script.js"></script>
+  <script type="module" src="electric-hero.js"></script>
+  <script type="module" src="nav-header.js"></script>
+  <script type="module" src="particles-bg.js"></script>
+  <script type="module" src="electric-borders.js"></script>
 
 </body>
 
