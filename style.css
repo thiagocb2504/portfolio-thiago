@@ -45,6 +45,8 @@
 }
 
 html {
+  /* brilhos e bordas elétricas passam da borda dos cards; nada pode criar rolagem lateral */
+  overflow-x: clip;
   scroll-behavior: smooth;
   scroll-padding-top: 92px;
   -webkit-text-size-adjust: 100%;
@@ -1686,8 +1688,14 @@ html:has(.pdialog[open]) {
 }
 
 /* ajustes do site */
+#projetos.has-orbit .projects-grid {
+  display: none;
+}
+
 .projects-orbit {
   margin-bottom: clamp(32px, 5vw, 64px);
+  /* as miniaturas são desenhadas em 520px e reduzidas; nada passa da largura da página */
+  overflow-x: clip;
 }
 
 .projects-orbit .orbit-item-inner {
@@ -1719,13 +1727,6 @@ html:has(.pdialog[open]) {
   color: var(--ink-3);
   letter-spacing: .08em;
   text-transform: uppercase;
-}
-
-/* no celular os itens ficariam pequenos demais; a grade de cards continua */
-@media (max-width: 700px) {
-  .projects-orbit {
-    display: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
