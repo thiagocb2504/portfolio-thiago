@@ -37,7 +37,7 @@ if (navBar && actions) {
     items,
     initialActiveIndex: 0,
     theme: 'dark',
-    size: 'md',
+    size: 'lg',
     frame: true,
     color: '#d90f0f',
     particleCount: 15,

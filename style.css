@@ -46,7 +46,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 92px;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -209,97 +209,25 @@ strong {
 }
 
 .nav {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 24px;
-  height: 64px;
+  height: 76px;
 }
 
 .nav-links {
   margin-left: auto;
 }
 
+/* o botão do menu fica no canto, sem tirar a navegação do centro */
 .nav-actions {
+  position: absolute;
+  right: var(--gutter);
   display: flex;
   align-items: center;
   gap: 4px;
-}
-
-.wordmark {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--serif);
-  font-size: 1.5rem;
-  line-height: 1;
-  letter-spacing: -.01em;
-}
-
-.wordmark-electric {
-  display: none;
-}
-
-/* com WebGL2 o nome do header também é desenhado pelo efeito elétrico */
-.wordmark.is-electric .wordmark-text {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-}
-
-.wordmark.is-electric .wordmark-electric {
-  display: block;
-  width: 196px;
-  height: 58px;
-  margin-left: -16px;
-  -webkit-mask-image:
-    linear-gradient(to right, transparent, #000 8%, #000 92%, transparent),
-    linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
-  -webkit-mask-composite: source-in;
-  mask-image:
-    linear-gradient(to right, transparent, #000 8%, #000 92%, transparent),
-    linear-gradient(to bottom, transparent, #000 16%, #000 84%, transparent);
-  mask-composite: intersect;
-}
-
-.nav-links {
-  display: flex;
-  gap: 32px;
-  font-size: .9375rem;
-}
-
-.nav-links a {
-  position: relative;
-  color: var(--ink-2);
-  padding-block: 8px;
-  transition: color .2s;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 2px;
-  height: 1px;
-  background: var(--accent);
-  box-shadow: 0 0 8px rgba(255, 0, 0, .8);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform .3s var(--ease);
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--ink);
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-  transform: scaleX(1);
 }
 
 .menu-toggle {
@@ -343,7 +271,7 @@ strong {
 ========================= */
 
 .gooey-host {
-  margin-left: auto;
+  margin-inline: auto;
 }
 
 /* no desktop a navegação gooey substitui a lista simples */
@@ -609,8 +537,9 @@ strong {
   display: none;
 }
 
-/* com WebGL2 o nome é desenhado pelo efeito; o h1 continua para leitores de tela */
-.intro-title.is-electric .intro-name {
+/* com JS o nome é desenhado pelo efeito; o h1 continua para leitores de tela.
+   O texto comum só aparece se o efeito falhar (.no-electric) */
+.js .intro-title:not(.no-electric) .intro-name {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -620,7 +549,7 @@ strong {
   white-space: nowrap;
 }
 
-.intro-title.is-electric .intro-electric {
+.js .intro-title:not(.no-electric) .intro-electric {
   display: block;
   width: 100%;
   aspect-ratio: 3 / 1;
@@ -644,11 +573,87 @@ strong {
   color: var(--accent);
 }
 
-.intro-grid {
+/* topo em duas colunas: nome e texto à esquerda, crachá pendurado à direita */
+.hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  gap: clamp(40px, 7vw, 112px);
-  align-items: start;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: stretch;
+}
+
+.hero-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-main .intro-title .intro-electric {
+  margin-top: 0;
+}
+
+/* a coluna do crachá sobe até o topo da seção, para o cordão sair lá de cima */
+.hero-badge {
+  position: relative;
+  min-height: clamp(540px, 72vh, 700px);
+  margin-top: calc(-1 * clamp(48px, 9vw, 112px));
+}
+
+.lanyard {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hero-badge .lanyard-stage {
+  position: absolute;
+  inset: 0;
+  /* o cordão surge do escuro aos poucos, sem corte reto no topo */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0, 0, 0, .35) 60px, #000 170px);
+  mask-image: linear-gradient(to bottom, transparent 0, rgba(0, 0, 0, .35) 60px, #000 170px);
+}
+
+.lanyard-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* sem WebGL aparece a foto estática */
+.badge-fallback {
+  display: block;
+  width: min(280px, 70%);
+  height: auto;
+  margin: 120px auto 0;
+  border-radius: 14px;
+  box-shadow: 0 0 0 1px rgba(255, 40, 40, .5), 0 0 30px -6px rgba(255, 0, 0, .5);
+}
+
+.js .hero-badge:not(.no-3d) .badge-fallback {
+  display: none;
+}
+
+.lanyard-canvas {
+  opacity: 0;
+  transition: opacity .8s var(--ease);
+}
+
+.hero-badge.is-3d .lanyard-canvas {
+  opacity: 1;
+}
+
+.badge-hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  text-align: center;
+  color: var(--ink-3);
+  pointer-events: none;
+}
+
+.hero-badge:not(.is-3d) .badge-hint {
+  display: none;
 }
 
 .intro-text p {
@@ -675,8 +680,15 @@ strong {
 }
 
 .now {
+  margin-top: clamp(40px, 6vw, 72px);
   border-top: 1px solid var(--accent);
   padding-top: 16px;
+}
+
+.now dl {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 32px;
 }
 
 .now-title {
@@ -764,7 +776,26 @@ strong {
 
 .js .section-head h2.lit {
   opacity: 1;
-  animation: neon-on 1.1s steps(1) both;
+  /* acende e depois segue falhando de vez em quando, como letreiro com mau contato */
+  animation:
+    neon-on 1.1s steps(1) both,
+    neon-faulty var(--faulty, 7s) steps(1) 1.1s infinite;
+}
+
+/* cada letreiro falha num ritmo diferente, para não piscarem juntos */
+#experiencia { --faulty: 6.3s; }
+#projetos { --faulty: 8.7s; }
+#stack { --faulty: 5.4s; }
+#formacao { --faulty: 9.6s; }
+
+@keyframes neon-faulty {
+  0%, 71% { opacity: 1; }
+  72% { opacity: .25; }
+  73% { opacity: 1; }
+  74% { opacity: .4; }
+  76%, 90% { opacity: 1; }
+  91% { opacity: .15; }
+  93%, 100% { opacity: 1; }
 }
 
 @keyframes neon-on {
@@ -1569,6 +1600,142 @@ html:has(.pdialog[open]) {
 
 
 /* =========================
+   ÓRBITA DOS PROJETOS (React Bits, por Dominik Koch)
+========================= */
+
+.orbit-container {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  isolation: isolate;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.orbit-container[data-draggable] {
+  cursor: grab;
+  touch-action: pan-y pinch-zoom;
+}
+
+.orbit-container[data-dragging],
+.orbit-container[data-dragging] * {
+  cursor: grabbing;
+}
+
+.orbit-path-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.orbit-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform, opacity;
+}
+
+.orbit-container[data-intro] .orbit-item {
+  opacity: 0;
+}
+
+.orbit-item[data-clickable] {
+  cursor: pointer;
+}
+
+.orbit-item-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--orbit-radius, 0px);
+  box-shadow: 0 calc(var(--orbit-shadow, 0) * 16px) calc(var(--orbit-shadow, 0) * 36px)
+    rgba(0, 0, 0, calc(var(--orbit-shadow, 0) * 0.45));
+  transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.orbit-item:hover .orbit-item-inner,
+.orbit-item:focus-visible .orbit-item-inner {
+  transform: scale(var(--orbit-hover-scale, 1));
+}
+
+.orbit-item:focus-visible {
+  outline: none;
+}
+
+.orbit-item:focus-visible .orbit-item-inner {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.orbit-center-content {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.orbit-center-content > * {
+  pointer-events: auto;
+}
+
+/* ajustes do site */
+.projects-orbit {
+  margin-bottom: clamp(32px, 5vw, 64px);
+}
+
+.projects-orbit .orbit-item-inner {
+  border: 1px solid rgba(255, 40, 40, .45);
+  background: var(--paper-2);
+  box-shadow: 0 0 24px -6px rgba(255, 0, 0, .45), 0 14px 30px -12px rgba(0, 0, 0, .7);
+}
+
+/* a ilustração é desenhada no tamanho de um card (520px) e reduzida como miniatura,
+   para os textos manterem a proporção em vez de estourar a moldura */
+.projects-orbit .pcard-media {
+  width: 520px;
+  height: 520px;
+  aspect-ratio: auto;
+  padding: 6%;
+  border: 0;
+  border-radius: 0;
+  transform: scale(var(--orbit-zoom, .3));
+  transform-origin: 0 0;
+}
+
+/* na órbita as janelas ocupam a largura toda do quadrado */
+.projects-orbit .frame--swing,
+.projects-orbit .frame--dark {
+  width: 100%;
+}
+
+.orbit-hint {
+  color: var(--ink-3);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* no celular os itens ficariam pequenos demais; a grade de cards continua */
+@media (max-width: 700px) {
+  .projects-orbit {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-item-inner {
+    transition: none;
+  }
+}
+
+
+/* =========================
    STACK
 ========================= */
 
@@ -1906,15 +2073,9 @@ html:has(.pdialog[open]) {
    ANIMAÇÃO
 ========================= */
 
-.js .reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity .6s var(--ease), transform .6s var(--ease);
-}
-
-.js .reveal.visible {
-  opacity: 1;
-  transform: none;
+/* blocos que entram com o AnimatedContent (animate-in.js) ficam escondidos até ele assumir */
+.js [data-animate]:not(.is-animated) {
+  visibility: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1928,11 +2089,6 @@ html:has(.pdialog[open]) {
     transition-duration: .01ms !important;
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
-  }
-
-  .js .reveal {
-    opacity: 1;
-    transform: none;
   }
 
 }
@@ -1974,7 +2130,7 @@ html:has(.pdialog[open]) {
 
   .nav-links {
     position: fixed;
-    top: 64px;
+    top: 76px;
     left: 0;
     right: 0;
     flex-direction: column;
@@ -2007,7 +2163,16 @@ html:has(.pdialog[open]) {
     display: none;
   }
 
-  .intro-grid {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-badge {
+    min-height: 480px;
+    margin-top: 0;
+  }
+
+  .now dl {
     grid-template-columns: 1fr;
   }
 

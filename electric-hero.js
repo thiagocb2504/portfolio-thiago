@@ -6,8 +6,6 @@ import { createElectricLogo } from './electric-logo.js';
 
 const title = document.querySelector('.intro-title');
 const stage = title?.querySelector('.intro-electric');
-const wordmark = document.querySelector('.wordmark');
-const wordmarkStage = wordmark?.querySelector('.wordmark-electric');
 
 const SETTINGS = {
   color: '#ff0000',
@@ -70,21 +68,14 @@ async function drawName() {
 }
 
 async function start() {
-  if (!stage && !wordmarkStage) {
+  if (!stage) {
     return;
   }
 
   const shape = await drawName();
 
-  // sem WebGL2 o texto normal continua aparecendo
-  if (stage && createElectricLogo(stage, shape, SETTINGS)) {
-    title.classList.add('is-electric');
-  }
-
-  // o nome pequeno do header usa o mesmo desenho e as mesmas configurações
-  if (wordmarkStage && createElectricLogo(wordmarkStage, shape, SETTINGS)) {
-    wordmark.classList.add('is-electric');
-  }
+  // sem WebGL2 o texto normal aparece no lugar
+  title.classList.add(createElectricLogo(stage, shape, SETTINGS) ? 'is-electric' : 'no-electric');
 }
 
-start();
+start().catch(() => title?.classList.add('no-electric'));

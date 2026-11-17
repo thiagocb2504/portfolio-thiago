@@ -39,11 +39,6 @@
   <header class="header">
     <nav class="nav wrap" aria-label="Navegação principal">
 
-      <a href="#topo" class="wordmark">
-        <span class="wordmark-text">Thiago Brito</span>
-        <span class="wordmark-electric" aria-hidden="true"></span>
-      </a>
-
       <ul class="nav-links" id="menu">
         <li><a href="#experiencia">Experiência</a></li>
         <li><a href="#projetos">Projetos</a></li>
@@ -70,59 +65,70 @@
     <!-- INTRO -->
     <section class="intro wrap">
 
-      <p class="intro-meta mono">
-        <span>Desenvolvedor de software</span>
-        <span>Brasília, DF · <time class="clock" aria-label="Horário local em Brasília">--:--</time></span>
-      </p>
+      <div class="hero">
 
-      <div class="intro-title">
-        <h1 class="intro-name">Thiago <em>Brito</em></h1>
-        <div class="intro-electric" aria-hidden="true"></div>
-      </div>
-
-      <div class="intro-grid">
-
-        <div class="intro-text">
-          <p class="lead">
-            Trabalho dos dois lados de uma aplicação: APIs em
-            <strong>Java e Spring Boot</strong> no back-end e interfaces em
-            <strong>Angular e TypeScript</strong> no front-end.
-          </p>
-          <p>
-            Hoje sou estagiário de desenvolvimento na <strong>CDS Solutions</strong>,
-            onde trabalho com <strong>Python, TypeScript e Docker</strong>, e curso
-            Análise e Desenvolvimento de Sistemas na Católica de Brasília.
-            Gosto de código organizado em camadas, de entender por que um padrão
-            existe antes de usá-lo e de terminar o que começo.
+        <div class="hero-main" data-animate="stagger">
+          <p class="intro-meta mono">
+            <span>Desenvolvedor de software</span>
+            <span>Brasília, DF · <time class="clock" aria-label="Horário local em Brasília">--:--</time></span>
           </p>
 
-          <div class="intro-actions">
-            <a class="btn btn-solid" href="assets/CV_TI_THIAGO_BRITO.pdf" target="_blank" rel="noopener">
-              Currículo em PDF
-            </a>
-            <a class="btn btn-line" href="#contato">Entrar em contato</a>
+          <div class="intro-title">
+            <h1 class="intro-name">Thiago <em>Brito</em></h1>
+            <div class="intro-electric" aria-hidden="true"></div>
+          </div>
+
+          <div class="intro-text">
+            <p class="lead">
+              Trabalho dos dois lados de uma aplicação. No dia a dia uso
+              <strong>Python, TypeScript e React</strong>, com Docker; nos estudos,
+              me aprofundo em <strong>Java e Spring Boot</strong>.
+            </p>
+            <p>
+              Hoje sou estagiário de desenvolvimento na <strong>CDS Solutions</strong>,
+              onde integro <strong>APIs bancárias</strong> e faço melhorias no front-end
+              e no back-end de <strong>sistemas ERP e CRM</strong>. Também curso Análise
+              e Desenvolvimento de Sistemas na Católica de Brasília.
+              Gosto de código organizado em camadas, de entender por que um padrão
+              existe antes de usá-lo e de terminar o que começo.
+            </p>
+
+            <div class="intro-actions">
+              <a class="btn btn-solid" href="assets/CV_TI_THIAGO_BRITO.pdf" target="_blank" rel="noopener">
+                Currículo em PDF
+              </a>
+              <a class="btn btn-line" href="#contato">Entrar em contato</a>
+            </div>
           </div>
         </div>
 
-        <aside class="now" aria-label="Neste momento">
-          <h2 class="now-title mono">Neste momento</h2>
-          <dl>
-            <div>
-              <dt>Trabalho</dt>
-              <dd>Estagiário de Desenvolvimento<br><span>CDS Solutions, desde out. 2026</span></dd>
-            </div>
-            <div>
-              <dt>Estudo</dt>
-              <dd>ADS, 4º semestre<br><span>Universidade Católica de Brasília</span></dd>
-            </div>
-            <div>
-              <dt>Praticando</dt>
-              <dd>Design patterns em Java<br><span>Strategy, Factory, Adapter, Chain</span></dd>
-            </div>
-          </dl>
-        </aside>
+        <div class="hero-badge">
+          <div class="lanyard-stage" role="img"
+            aria-label="Crachá da CDS Solutions com a foto de Thiago Brito. Arraste para balançar e clique para virar."></div>
+          <img class="badge-fallback" src="assets/thiago.webp" width="480" height="600"
+            alt="Foto de Thiago Brito, de óculos e camiseta branca">
+          <p class="badge-hint mono" aria-hidden="true">Clique no crachá para virar</p>
+        </div>
 
       </div>
+
+      <aside class="now" aria-label="Neste momento" data-animate>
+        <h2 class="now-title mono">Neste momento</h2>
+        <dl>
+          <div>
+            <dt>Trabalho</dt>
+            <dd>Estagiário de Desenvolvimento<br><span>CDS Solutions, desde out. 2026</span></dd>
+          </div>
+          <div>
+            <dt>Estudo</dt>
+            <dd>ADS, 4º semestre<br><span>Universidade Católica de Brasília</span></dd>
+          </div>
+          <div>
+            <dt>Foco</dt>
+            <dd>Integrações e sistemas de gestão<br><span>APIs bancárias, ERP e CRM</span></dd>
+          </div>
+        </dl>
+      </aside>
 
     </section>
 
@@ -130,14 +136,14 @@
     <!-- EXPERIÊNCIA -->
     <section id="experiencia" class="section wrap">
 
-      <header class="section-head">
+      <header class="section-head" data-animate>
         <span class="section-index mono">01</span>
         <h2>Experiência</h2>
       </header>
 
-      <ol class="ledger">
+      <ol class="ledger" data-animate="stagger">
 
-        <li class="ledger-row reveal">
+        <li class="ledger-row">
           <div class="ledger-when mono">
             <span>Out. 2026</span>
             <span>Atual</span>
@@ -145,18 +151,20 @@
           <div class="ledger-what">
             <h3>Estagiário de Desenvolvimento de Software</h3>
             <p class="ledger-org">CDS Solutions · Presencial</p>
-            <p class="ledger-stack mono">Python · TypeScript · Docker</p>
+            <p class="ledger-stack mono">Python · TypeScript · React · Docker</p>
           </div>
           <div class="ledger-body">
             <p>
-              Desenvolvimento e manutenção de sistemas web, APIs e painéis
-              administrativos, no front-end e no back-end.
+              Integração de APIs bancárias e melhorias no front-end e no back-end
+              de sistemas ERP e CRM.
             </p>
             <ul class="ticks">
+              <li>Integração de APIs bancárias</li>
+              <li>Melhorias em sistemas ERP e CRM, do banco de dados à interface</li>
               <li>Funcionalidades e APIs com Python</li>
-              <li>Interfaces com Angular, TypeScript, HTML e CSS</li>
+              <li>Interfaces com React, TypeScript, HTML e CSS</li>
               <li>Modelagem e manutenção de bancos de dados</li>
-              <li>Integrações com serviços de terceiros, workflows e webhooks</li>
+              <li>Automações com workflows e webhooks</li>
               <li>Ambientes com Docker</li>
               <li>Testes funcionais e de integração, correção de bugs e refatoração</li>
               <li>Documentação técnica e revisão de código</li>
@@ -164,7 +172,7 @@
           </div>
         </li>
 
-        <li class="ledger-row reveal">
+        <li class="ledger-row">
           <div class="ledger-when mono">
             <span>Set. 2026</span>
             <span>Out. 2026</span>
@@ -183,7 +191,7 @@
           </div>
         </li>
 
-        <li class="ledger-row reveal">
+        <li class="ledger-row">
           <div class="ledger-when mono">
             <span>Abr. 2024</span>
             <span>Set. 2026</span>
@@ -210,7 +218,7 @@
     <!-- PROJETOS -->
     <section id="projetos" class="section wrap">
 
-      <header class="section-head">
+      <header class="section-head" data-animate>
         <span class="section-index mono">02</span>
         <h2>Projetos</h2>
         <a class="github-cta" href="https://github.com/thiagocb2504?tab=repositories" target="_blank" rel="noopener">
@@ -222,10 +230,10 @@
         </a>
       </header>
 
-      <div class="projects-grid">
+      <div class="projects-grid" data-animate="stagger">
 
         <!-- VINI VINHOS -->
-        <article class="pcard pcard--wide reveal" data-project="vinivinhos">
+        <article class="pcard pcard--wide" data-project="vinivinhos">
           <div class="pcard-media">
             <div class="frame frame--browser">
               <div class="frame-bar">
@@ -250,7 +258,7 @@
         </article>
 
         <!-- PAGAMENTOS -->
-        <article class="pcard reveal" data-project="pagamentos">
+        <article class="pcard" data-project="pagamentos">
           <div class="pcard-media">
             <div class="frame frame--browser">
               <div class="frame-bar">
@@ -274,7 +282,7 @@
         </article>
 
         <!-- CADASTRO -->
-        <article class="pcard reveal" data-project="cadastro">
+        <article class="pcard" data-project="cadastro">
           <div class="pcard-media">
             <div class="frame frame--dark" aria-hidden="true">
               <div class="frame-bar">
@@ -304,7 +312,7 @@
         </article>
 
         <!-- CIFRA DE CÉSAR -->
-        <article class="pcard reveal" data-project="cifra">
+        <article class="pcard" data-project="cifra">
           <div class="pcard-media">
             <div class="frame frame--swing" aria-hidden="true">
               <div class="frame-bar">
@@ -337,7 +345,7 @@
         </article>
 
         <!-- CALCULADORA -->
-        <article class="pcard reveal" data-project="calculadora">
+        <article class="pcard" data-project="calculadora">
           <div class="pcard-media">
             <div class="frame frame--calc" aria-hidden="true">
               <div class="frame-bar">
@@ -368,7 +376,7 @@
         </article>
 
         <!-- CAMPO MINADO -->
-        <article class="pcard reveal" data-project="campo-minado">
+        <article class="pcard" data-project="campo-minado">
           <div class="pcard-media">
             <div class="frame frame--swing" aria-hidden="true">
               <div class="frame-bar">
@@ -393,7 +401,7 @@
         </article>
 
         <!-- BANCO EM C -->
-        <article class="pcard reveal" data-project="banco">
+        <article class="pcard" data-project="banco">
           <div class="pcard-media">
             <div class="frame frame--dark" aria-hidden="true">
               <div class="frame-bar">
@@ -433,12 +441,12 @@ Opcao: <span class="caret"></span></pre>
     <!-- STACK -->
     <section id="stack" class="section wrap">
 
-      <header class="section-head">
+      <header class="section-head" data-animate>
         <span class="section-index mono">03</span>
         <h2>Stack</h2>
       </header>
 
-      <div class="stack-grid reveal">
+      <div class="stack-grid" data-animate="stagger">
 
         <div class="stack-col">
           <h3 class="mono">Back-end</h3>
@@ -498,7 +506,7 @@ Opcao: <span class="caret"></span></pre>
 
       </div>
 
-      <article id="ia" class="ai-block reveal">
+      <article id="ia" class="ai-block" data-animate>
 
         <div class="ai-intro">
           <p class="kicker mono">IA no dia a dia · Claude</p>
@@ -537,18 +545,18 @@ Opcao: <span class="caret"></span></pre>
     <!-- FORMAÇÃO -->
     <section id="formacao" class="section wrap">
 
-      <header class="section-head">
+      <header class="section-head" data-animate>
         <span class="section-index mono">04</span>
         <h2>Formação</h2>
       </header>
 
-      <div class="edu reveal">
+      <div class="edu" data-animate>
         <p class="kicker mono">Graduação · EAD · em andamento</p>
         <h3>Análise e Desenvolvimento de Sistemas</h3>
         <p>Universidade Católica de Brasília, 4º semestre</p>
       </div>
 
-      <div class="courses reveal">
+      <div class="courses" data-animate>
 
         <div class="courses-head">
           <h3>Cursos complementares</h3>
@@ -609,7 +617,7 @@ Opcao: <span class="caret"></span></pre>
 
 
     <!-- CONTATO -->
-    <section id="contato" class="contact wrap">
+    <section id="contato" class="contact wrap" data-animate="stagger">
 
       <p class="section-index mono">05 · Contato</p>
 
@@ -916,7 +924,7 @@ Opcao: <span class="caret"></span></pre>
   </template>
 
 
-  <footer class="footer wrap mono">
+  <footer class="footer wrap mono" data-animate>
     <p>Thiago Brito · <span class="year">2026</span></p>
     <p>Escrito à mão em HTML, CSS e JavaScript</p>
     <a href="#topo">Voltar ao topo ↑</a>
@@ -927,6 +935,9 @@ Opcao: <span class="caret"></span></pre>
   <script type="module" src="nav-header.js"></script>
   <script type="module" src="particles-bg.js"></script>
   <script type="module" src="electric-borders.js"></script>
+  <script type="module" src="badge.js"></script>
+  <script type="module" src="projects-orbit.js"></script>
+  <script type="module" src="animate-in.js"></script>
 
 </body>
 

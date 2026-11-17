@@ -42,6 +42,22 @@ document.addEventListener('keydown', (event) => {
 
 
 /* =========================
+   RESERVA DOS EFEITOS 3D
+========================= */
+
+// os efeitos vêm de módulos externos; se não carregarem a tempo,
+// o nome em texto e a foto estática aparecem no lugar
+setTimeout(() => {
+  const title = document.querySelector('.intro-title');
+  const badge = document.querySelector('.hero-badge');
+  if (title && !title.classList.contains('is-electric')) title.classList.add('no-electric');
+  if (badge && !badge.classList.contains('is-3d')) badge.classList.add('no-3d');
+  // se o GSAP não carregou, os blocos aparecem sem animação
+  document.querySelectorAll('[data-animate]:not(.is-animated)').forEach((el) => el.classList.add('is-animated'));
+}, 8000);
+
+
+/* =========================
    HORA EM BRASÍLIA
 ========================= */
 
@@ -59,28 +75,6 @@ function updateClock() {
 
 updateClock();
 setInterval(updateClock, 30000);
-
-
-/* =========================
-   ANIMAÇÃO DE ENTRADA
-========================= */
-
-const revealItems = document.querySelectorAll('.reveal');
-
-if ('IntersectionObserver' in window) {
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { rootMargin: '0px 0px -8% 0px' });
-
-  revealItems.forEach((item) => revealObserver.observe(item));
-} else {
-  revealItems.forEach((item) => item.classList.add('visible'));
-}
 
 
 /* =========================
