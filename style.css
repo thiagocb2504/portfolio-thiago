@@ -218,8 +218,17 @@ strong {
   height: 76px;
 }
 
+/* lista simples: no desktop só aparece se a navegação gooey não carregar */
 .nav-links {
-  margin-left: auto;
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+@media (min-width: 801px) {
+  .js .header:not(.has-gooey):not(.no-gooey) .nav-links {
+    visibility: hidden;
+  }
 }
 
 /* o botão do menu fica no canto, sem tirar a navegação do centro */

@@ -52,6 +52,7 @@ setTimeout(() => {
   const badge = document.querySelector('.hero-badge');
   if (title && !title.classList.contains('is-electric')) title.classList.add('no-electric');
   if (badge && !badge.classList.contains('is-3d')) badge.classList.add('no-3d');
+  if (!header.classList.contains('has-gooey')) header.classList.add('no-gooey');
   // se o GSAP não carregou, os blocos aparecem sem animação
   document.querySelectorAll('[data-animate]:not(.is-animated)').forEach((el) => el.classList.add('is-animated'));
 }, 8000);
