@@ -80,9 +80,11 @@ const createEngine = (root, config, setAspect) => {
     st.yMid = (y0 + y1) / 2;
     st.yHalf = Math.max(1e-3, (y1 - y0) / 2);
     const depth = clamp(cfg.depth, 0, 1);
-    const margin = (cfg.itemSize / 2) * (1 + depth * FRONT_GROW) * Math.max(1, cfg.hoverScale) + 2;
-    st.bbox = [x0 - margin, y0 - margin, x1 + margin, y1 + margin];
-    setAspect((x1 - x0 + margin * 2) / (y1 - y0 + margin * 2));
+    const grow = (1 + depth * FRONT_GROW) * Math.max(1, cfg.hoverScale);
+    const mx = (cfg.itemSize / 2) * grow + 2;
+    const my = (cfg.itemSize / cfg.itemAspect / 2) * grow + 2;
+    st.bbox = [x0 - mx, y0 - my, x1 + mx, y1 + my];
+    setAspect((x1 - x0 + mx * 2) / (y1 - y0 + my * 2));
   };
 
   const applyDash = (reveal) => {
@@ -110,9 +112,10 @@ const createEngine = (root, config, setAspect) => {
     const scale = Math.min(st.width / (bx1 - bx0), st.height / (by1 - by0));
     st.scale = scale > 0 && isFinite(scale) ? scale : 0;
     st.size = cfg.itemSize * st.scale;
+    st.sizeH = st.size / cfg.itemAspect;
     for (const it of st.items) {
       it.el.style.width = `${st.size}px`;
-      it.el.style.height = `${st.size}px`;
+      it.el.style.height = `${st.sizeH}px`;
     }
     if (!st.scale) return;
     const vw = st.width / st.scale;
@@ -165,7 +168,8 @@ const createEngine = (root, config, setAspect) => {
     const [bx0, by0, bx1, by1] = st.bbox;
     const cx = (bx0 + bx1) / 2;
     const cy = (by0 + by1) / 2;
-    const half = st.size / 2;
+    const halfW = st.size / 2;
+    const halfH = st.sizeH / 2;
     const introRunning = st.introStart >= 0;
     const elapsed = introRunning ? (now - st.introStart) / 1000 : 0;
     const spread = introRunning ? easeOutQuint(clamp(elapsed / INTRO_SPREAD, 0, 1)) : 1;
@@ -183,8 +187,8 @@ const createEngine = (root, config, setAspect) => {
         scale *= 0.7 + 0.3 * appear;
         opacity *= appear * appear * (3 - 2 * appear);
       }
-      const sx = (x - cx) * st.scale + st.width / 2 - half;
-      const sy = (y - cy) * st.scale + st.height / 2 - half;
+      const sx = (x - cx) * st.scale + st.width / 2 - halfW;
+      const sy = (y - cy) * st.scale + st.height / 2 - halfH;
       let z = depth > 0 ? (d <= 0 ? 10 + Math.round((d + 1) * 80) : 110 + Math.round(d * 80)) : 1;
       if (i === st.hoverIndex) z += 200;
       write(it, 't', 'transform', `translate3d(${sx.toFixed(2)}px, ${sy.toFixed(2)}px, 0px) scale(${scale.toFixed(4)})`);
@@ -432,6 +436,7 @@ export function createOrbitImages(host, {
   rotation = -8,
   duration = 40,
   itemSize = 64,
+  itemAspect = 1,
   direction = 'normal',
   showPath = false,
   pathColor = 'rgba(128,128,128,0.35)',
@@ -457,8 +462,9 @@ export function createOrbitImages(host, {
   const root = document.createElement('div');
   root.className = `orbit-container ${className}`.trim();
   root.style.width = '100%';
-  root.style.aspectRatio = String((radiusX * 2 + itemSize * 1.6) / (radiusY * 2 + itemSize * 1.6));
-  root.style.setProperty('--orbit-radius', `${(itemRadius / Math.max(1, itemSize)) * 100}%`);
+  root.style.aspectRatio = String((radiusX * 2 + itemSize * 1.6) / (radiusY * 2 + (itemSize / itemAspect) * 1.6));
+  const itemHeight = Math.max(1, itemSize / itemAspect);
+  root.style.setProperty('--orbit-radius', `${(itemRadius / Math.max(1, itemSize)) * 100}% / ${(itemRadius / itemHeight) * 100}%`);
   root.style.setProperty('--orbit-shadow', String(clamp(shadow, 0, 1)));
   root.style.setProperty('--orbit-hover-scale', String(hoverScale));
   if (intro) root.setAttribute('data-intro', '');
@@ -525,7 +531,7 @@ export function createOrbitImages(host, {
 
   const config = {
     current: {
-      baseWidth, rotation, duration, itemSize, direction, pathWidth, pathDash, paused,
+      baseWidth, rotation, duration, itemSize, itemAspect, direction, pathWidth, pathDash, paused,
       depth, hoverScale, hoverSpeed, draggable, clickToFront, onItemClick, intro
     }
   };

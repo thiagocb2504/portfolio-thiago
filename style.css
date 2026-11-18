@@ -1707,11 +1707,11 @@ html:has(.pdialog[open]) {
   box-shadow: 0 0 24px -6px rgba(255, 0, 0, .45), 0 14px 30px -12px rgba(0, 0, 0, .7);
 }
 
-/* a ilustração é desenhada no tamanho de um card (520px) e reduzida como miniatura,
-   para os textos manterem a proporção em vez de estourar a moldura */
+/* a ilustração é desenhada com 520px de largura, no formato do item, e reduzida como
+   miniatura, para os textos manterem a proporção em vez de estourar a moldura */
 .projects-orbit .pcard-media {
   width: 520px;
-  height: 520px;
+  height: calc(520px / var(--orbit-aspect, 1));
   aspect-ratio: auto;
   padding: 0;
   border: 0;
@@ -1752,10 +1752,11 @@ html:has(.pdialog[open]) {
   grid-auto-rows: 1fr;
 }
 
-/* janela da calculadora e do tabuleiro ficaram maiores; os números acompanham */
-.projects-orbit .calc-display { font-size: 10cqi; }
-.projects-orbit .k { font-size: 5.5cqi; }
-.projects-orbit .mock-mines span { font-size: 4cqi; }
+/* calculadora e tabuleiro se ajustam à altura do item, sem passar da borda */
+.projects-orbit .calc-display { padding-block: 1.2cqi; font-size: 6cqi; }
+.projects-orbit .k { min-height: 0; aspect-ratio: auto; font-size: 3.2cqi; }
+.projects-orbit .mock-mines { grid-auto-rows: 1fr; }
+.projects-orbit .mock-mines span { min-height: 0; aspect-ratio: auto; font-size: 3cqi; }
 
 .orbit-hint {
   color: var(--ink-3);

@@ -24,6 +24,10 @@ if (grid && cards.length) {
 
   const small = window.matchMedia('(max-width: 700px)').matches;
 
+  // formato das capturas (1200×577) com a barra da janela por cima: elas aparecem inteiras, sem corte
+  const ASPECT = 1.9;
+  host.style.setProperty('--orbit-aspect', String(ASPECT));
+
   const hint = document.createElement('p');
   hint.className = 'orbit-hint mono';
   hint.textContent = small ? 'Toque em um projeto' : 'Clique em um projeto';
@@ -35,7 +39,8 @@ if (grid && cards.length) {
     radiusY: small ? 130 : 100,
     rotation: small ? -6 : -8,
     duration: 30,
-    itemSize: small ? 150 : 165,
+    itemSize: small ? 200 : 240,
+    itemAspect: ASPECT,
     depth: 0.6,
     itemRadius: 10,
     showPath: true,
