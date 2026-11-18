@@ -2,7 +2,7 @@
    NAVEGAÇÃO GOOEY NO HEADER
 ========================= */
 
-import { createGooeyNav } from './gooey-nav.js';
+import { createGooeyNav } from '../components/gooey-nav.js';
 
 const header = document.querySelector('.header');
 const navBar = header?.querySelector('.nav');

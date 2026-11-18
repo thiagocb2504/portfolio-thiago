@@ -1357,7 +1357,7 @@ strong {
   aspect-ratio: auto;
 }
 
-/* campo minado (o tabuleiro é montado pelo script.js) */
+/* campo minado (o tabuleiro é montado pelo js/main.js) */
 .mock-mines {
   display: grid;
   grid-template-columns: repeat(var(--cols, 14), 1fr);
@@ -2118,7 +2118,7 @@ html:has(.pdialog[open]) {
    ANIMAÇÃO
 ========================= */
 
-/* blocos que entram com o AnimatedContent (animate-in.js) ficam escondidos até ele assumir */
+/* blocos que entram com o AnimatedContent (js/modules/animate-in.js) ficam escondidos até ele assumir */
 .js [data-animate]:not(.is-animated) {
   visibility: hidden;
 }

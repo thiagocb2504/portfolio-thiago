@@ -2,7 +2,7 @@
    NOME COM EFEITO ELÉTRICO
 ========================= */
 
-import { createElectricLogo } from './electric-logo.js';
+import { createElectricLogo } from '../components/electric-logo.js';
 
 const title = document.querySelector('.intro-title');
 const stage = title?.querySelector('.intro-electric');

@@ -2,7 +2,7 @@
    ENTRADA DOS BLOCOS
 ========================= */
 
-import { createAnimatedContent } from './animated-content.js';
+import { createAnimatedContent } from '../components/animated-content.js';
 
 const SETTINGS = {
   distance: 100,

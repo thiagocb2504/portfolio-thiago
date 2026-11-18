@@ -2,7 +2,7 @@
    FUNDO DE PARTÍCULAS
 ========================= */
 
-import { createParticles } from './particles.js';
+import { createParticles } from '../components/particles.js';
 
 // fica fixo atrás de todo o conteúdo e não bloqueia cliques
 const background = document.createElement('div');

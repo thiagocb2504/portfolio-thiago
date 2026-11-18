@@ -2,7 +2,7 @@
    BORDAS ELÉTRICAS
 ========================= */
 
-import { createElectricBorder } from './electric-border.js';
+import { createElectricBorder } from '../components/electric-border.js';
 
 const SETTINGS = {
   color: '#ff0000',

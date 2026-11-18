@@ -2,7 +2,7 @@
    CRACHÁ 3D (LANYARD)
 ========================= */
 
-import { createLanyard } from './lanyard.js';
+import { createLanyard } from '../components/lanyard.js';
 
 const holder = document.querySelector('.hero-badge');
 const stage = holder?.querySelector('.lanyard-stage');
@@ -132,8 +132,8 @@ async function start() {
     document.fonts.load('500 26px "Geist Mono"')
   ]);
   const [photo, logo] = await Promise.all([
-    loadImage('assets/thiago-cracha.webp'),
-    loadImage('assets/cds-logo.svg')
+    loadImage('assets/img/thiago-cracha.webp'),
+    loadImage('assets/img/cds-logo.svg')
   ]);
 
   const lanyard = createLanyard(stage, {

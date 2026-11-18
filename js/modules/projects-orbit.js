@@ -2,7 +2,7 @@
    ÓRBITA DOS PROJETOS
 ========================= */
 
-import { createOrbitImages } from './orbit-images.js';
+import { createOrbitImages } from '../components/orbit-images.js';
 
 const section = document.querySelector('#projetos');
 const grid = section?.querySelector('.projects-grid');
