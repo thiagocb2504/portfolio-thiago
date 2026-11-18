@@ -31,11 +31,11 @@ if (grid && cards.length) {
   const orbit = createOrbitImages(host, {
     items,
     // no celular a elipse é mais estreita e alta, para os itens ficarem grandes o bastante para tocar
-    radiusX: small ? 190 : 340,
-    radiusY: small ? 130 : 80,
+    radiusX: small ? 190 : 360,
+    radiusY: small ? 130 : 100,
     rotation: small ? -6 : -8,
     duration: 30,
-    itemSize: 150,
+    itemSize: small ? 150 : 165,
     depth: 0.6,
     itemRadius: 10,
     showPath: true,

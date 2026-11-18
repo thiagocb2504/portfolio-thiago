@@ -61,7 +61,6 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
 }
 
 /* textura leve de papel */
@@ -1693,6 +1692,10 @@ html:has(.pdialog[open]) {
 }
 
 .projects-orbit {
+  /* a órbita usa a largura da tela além da coluna de texto, até 1440px */
+  --orbit-w: min(100vw - var(--gutter) * 2, 1440px);
+  width: var(--orbit-w);
+  margin-left: calc((100% - var(--orbit-w)) / 2);
   margin-bottom: clamp(32px, 5vw, 64px);
   /* as miniaturas são desenhadas em 520px e reduzidas; nada passa da largura da página */
   overflow-x: clip;
@@ -1710,18 +1713,49 @@ html:has(.pdialog[open]) {
   width: 520px;
   height: 520px;
   aspect-ratio: auto;
-  padding: 6%;
+  padding: 0;
   border: 0;
   border-radius: 0;
   transform: scale(var(--orbit-zoom, .3));
   transform-origin: 0 0;
 }
 
-/* na órbita as janelas ocupam a largura toda do quadrado */
-.projects-orbit .frame--swing,
-.projects-orbit .frame--dark {
+/* na órbita a janela ocupa o quadrado inteiro, de ponta a ponta, sem moldura sobrando */
+.projects-orbit .frame {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  height: 100%;
+  border-radius: 0;
+  box-shadow: none;
 }
+
+.projects-orbit .frame > :not(.frame-bar) {
+  flex: 1;
+  min-height: 0;
+}
+
+.projects-orbit .frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+}
+
+.projects-orbit .mock-calc {
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-orbit .calc-keys {
+  flex: 1;
+  grid-auto-rows: 1fr;
+}
+
+/* janela da calculadora e do tabuleiro ficaram maiores; os números acompanham */
+.projects-orbit .calc-display { font-size: 10cqi; }
+.projects-orbit .k { font-size: 5.5cqi; }
+.projects-orbit .mock-mines span { font-size: 4cqi; }
 
 .orbit-hint {
   color: var(--ink-3);
@@ -1945,13 +1979,13 @@ html:has(.pdialog[open]) {
   box-shadow: 0 0 12px rgba(255, 0, 0, .6);
 }
 
-/* luz vermelha vinda de baixo */
+/* luz vermelha atrás do contato; some antes de chegar às bordas, sem corte no rodapé */
 .contact::after {
   content: "";
   position: absolute;
   z-index: -1;
-  inset: 30% 0 0;
-  background: radial-gradient(30% 80% at 36% 100%, rgba(255, 0, 0, .1), transparent);
+  inset: 20% 0 0;
+  background: radial-gradient(ellipse 34% 42% at 36% 55%, rgba(255, 0, 0, .09), rgba(255, 0, 0, .03) 55%, transparent 100%);
   pointer-events: none;
 }
 
