@@ -2,7 +2,7 @@
 
 Portfólio pessoal feito em **HTML, CSS e JavaScript puro**, sem framework e sem etapa de build, publicado no GitHub Pages.
 
-**Site:** https://thiagocb2504.github.io/portfolio-thiago/
+**Site:** https://thiagobrito.is-a.dev
 
 ## O que tem na página
 
